@@ -1,0 +1,64 @@
+<div class="ct-above-footer">
+        <div class="container-inner">
+            <section id="custom_html-11" class="widget_text widget widget_custom_html">
+                <h2 class="widget-title">nos partenaires</h2>
+                <div class="textwidget custom-html-widget">
+                    <a class="africaininfo" title="Afrique" href="http://www.africain.info/" target="_blank" rel="noopener">
+                        <img src="https://www.africain.info/images/ban-africaininfo-180x34.gif" alt="Actualites et journaux Afrique" height="34" width="180" border="0" >
+                    </a>
+                </div>
+            </section>
+            <section id="refined-magazine-grid-post-2" class="widget refined-magazine-grid-post">
+                <div class="title-wrapper cat-88">
+                    {% if footer is not empty %}
+                    <h2 class="widget-title">
+                        <a href="#"> Reportages Vidéos </a>
+                    </h2>
+                    {% endif %}
+                </div>
+                <div class="ct-grid-post clearfix">
+                    {% for allFooter in footer %}
+                    <div class="ct-three-cols">
+                        <section class="ct-grid-post-list">
+                            <div class="post-thumb">
+                                <a href="{{ path('readMore',{_slug:allFooter.postUrl, _year:allFooter.postCreatedAt|date("Y"), _month:allFooter.postCreatedAt|date("m"), _day:allFooter.postCreatedAt|date("j")}) }}">
+                                    {% if  allFooter.postPhotos != null %}
+                                        <img src="{{ vich_uploader_asset(allFooter, 'imageFile') | imagine_filter('related')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="De Beers s’intéresse au secteur réformé de l’extraction de diamants en Angola" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allFooter, 'imageFile') | imagine_filter('related') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                                    {% endif %}
+                                </a>
+                            </div>
+                            <div class="post-content mt-10">
+                                <div class="post-meta">
+                                        <span class="cat-links">
+                                            {# <a class="ct-cat-item-83" href="{{ path('aLaUne') }}"  rel="category tag">A la une</a>   #}
+                                              {% set postCategory = allFooter.categories.getSnapshot %}
+                                              {% set j = -1 %}
+                                              {% for category in  postCategory %}
+                                                {% set j = j + 1 %}
+                                                <a class="ct-cat-item-48" href="{{ path('category_link',{slug:category.postCategoryUrl}) }}"  rel="category tag">{{ category.categoryTitle }}</a>
+                                                
+                                              {% endfor %}
+                                            {# <a class="ct-cat-item-88" href="{{ path('reportageVideo') }}"  rel="category tag">Reportages Vidéos</a> #}
+                                            {# <a class="ct-cat-item-93" href="{{ path('successStory') }}"  rel="category tag">Success Story</a> #}
+                                        </span>
+                                </div>
+                                <h3 class="post-title">
+                                    <a href="{{ path('readMore',{_slug:allFooter.postUrl, _year:allFooter.postCreatedAt|date("Y"), _month:allFooter.postCreatedAt|date("m"), _day:allFooter.postCreatedAt|date("j")}) }}">{{ allFooter.postTitle }}</a>
+                                </h3>
+                                <div class="post-meta">
+                                        <span class="posted-on"><i class="fa fa-calendar"></i>
+                                            <a href="https://gate-news.com/index.php/2021/06/04/success-story-ben-romdhane-mohamed-lhabib-fondateur-et-pdg-dearth-group/" rel="bookmark">
+                                                <time class="entry-date published" datetime="{{ allFooter.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}" itemprop="datePublished">{{ allFooter.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                <time class="updated" datetime="2021-06-04T14:13:24+02:00" itemprop="dateModified">{{ allFooter.updatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                            </a>
+                                        </span>
+                                </div>
+                                <div class="post-excerpt"> <p>{{ allFooter.postContent|striptags|u.truncate(150,'...' )|raw}}</p> </div>
+                            </div>
+                        </section>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+</div>
