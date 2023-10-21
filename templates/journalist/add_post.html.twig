@@ -1,0 +1,99 @@
+{{ include('admin/layout/header.html.twig') }}
+<body class="hold-transition sidebar-mini layout-fixed">
+
+<!-- Navbar nampidirina -->
+{{ include('journalist/layout/nav-bar.html.twig') }}
+
+            
+    <section class="content">
+      <div class="container-fluid">
+         <div class="row">
+           <div class="col-lg-12">
+             <div class="card card-maroon mt-3">
+              <div class="card-header">
+                <h2 class="card-title">Ajouter une arcticle</h2>
+              </div>
+              
+              
+                <div class="card-body">
+                {{ form_start(form_post) }}
+                <div class="card-body">
+                    {{form_row(form_post.postTitle)}}
+                    {{form_row(form_post.postContent)}}
+                    {{form_row(form_post.categories)}}
+                    {{form_row(form_post.metaKey)}}
+                    {{form_row(form_post.postUrl)}}
+                    {{form_row(form_post.metaDescription)}}
+                    {{form_row(form_post.imageFile)}}
+                    <ul id="product-images-fields-list"
+                        data-prototype="{{ form_widget(form_post.postImages.vars.prototype)|e }}"
+                        data-widget-tags="{{ '<li></li>'|e }}"
+                        data-widget-counter="{{ form_post.postImages|length }}"
+                    >
+                        {% for key,productImageForm in form_post.postImages %}
+                            {{ form_widget(productImageForm) }}
+                        {% endfor %}
+                    </ul>
+                    <button type="button"
+                            class="add-another-collection-widget"
+                            data-list-selector="#product-images-fields-list">Ajouter une autre image</button>
+                    {{form_row(form_post.videoFile)}}
+                  
+                </div>
+
+                  </div>
+
+                <div class="card-footer">
+                  <input type="submit" class="btn btn-success" value="Enregistrer">
+                </div>
+             {{form_end(form_post)}}
+            </div>
+           </div>
+         </div>      
+      </div>
+    </section>
+ 
+
+{{ include('admin/layout/footer.html.twig') }}  
+<script>
+
+	const postTitle = document.querySelector('.postTitle');
+const postUrl = document.querySelector('.postUrl');
+const imageFileClass = document.querySelector('.imageFileClass');
+const videoFileClass = document.querySelector('.videoFileClass');
+
+const slugify = (text) => {
+return text.toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '').replace(/\-\-+/g, '-');
+};
+
+postTitle.addEventListener('change', function () {
+postUrl.value = slugify(postTitle.value);
+}, false);
+
+postTitle.addEventListener('keypress', function () {
+postUrl.value = slugify(postTitle.value);
+}, false);
+
+postTitle.addEventListener('mouseup', function () {
+postUrl.value = slugify(postTitle.value);
+}, false);
+
+postTitle.addEventListener('keyup', function () {
+postUrl.value = slugify(postTitle.value);
+}, false);
+
+
+imageFileClass.addEventListener('change', function (event) {
+document.querySelectorAll('.custom-file-label')[0].textContent = event.target.value.split("\\").pop();
+
+}, false);
+
+videoFileClass.addEventListener('change', function (event) {
+document.querySelectorAll('.custom-file-label')[1].textContent = event.target.value.split("\\").pop();
+
+}, false);
+</script>
+
+
+</body>
+</html>

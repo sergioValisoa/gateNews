@@ -1,0 +1,94 @@
+{{ include('publique/layout/header.html.twig') }}
+<body class="home blog custom-background wp-custom-logo wp-embed-responsive hfeed ct-full-layout ct-sticky-sidebar right-sidebar" itemtype="https://schema.org/Blog" itemscope>
+<div id="page" class="site">
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+    </div>
+    {{ include('publique/layout/header2.html.twig') }}
+    <div id="content" class="site-content">
+   
+        <div class="container-inner ct-container-main clearfix">
+            <div class="front-page-content-wrapper">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main">
+                        <article id="" class="page type-page status-publish" itemtype="" itemscope="">
+                        <div class="refined-magazine-content-container refined-magazine-no-thumbnail">
+                        <div class="refined-magazine-content-area">
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline">Abonnement</h1>
+                        </header>
+                    <div class="entry-content">
+                        <div class="row">
+                            {%  set couleur = ['warning', 'maroon' , 'orange'] %}
+                            {%  set couleurbtn = ['warning', 'danger' , 'secondary'] %}
+                            {% set i = -1 %}
+                            {% for abonnement in abonnements  %}
+                            {% set i = i + 1 %}
+                        <div class="col-md-4">
+            <!-- abonnement -->
+                                <div class="card card-{{couleur[i]}}">
+                                  <!-- Add the bg color to the header using any of the bg-* classes -->
+                                  <div class="card-header" align="center">
+                                    <h3 class="widget-user-username">{{ abonnement.subscriptionName }}</h3>
+                                    <h4 class="widget-user-desc">{{ abonnement.subscriptionPrice }} $</h4>
+                                  </div>
+                                 <div class="card-body" align="center">
+                                    {{ abonnement.subscriptionDescription }}
+                                    </div>
+                                  <div class="card-footer" align="center">
+                                    <button type="button" class="btn btn-{{couleurbtn[i]}}" data-toggle="modal" data-target="#abonnement-{{i}}">Payer</button></br>
+                                  
+                                  </div>
+                                </div>
+
+            <!-- modal abonnement -->
+                <div class="modal fade" id="abonnement-{{i}}">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Payement</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form method="POST" action="{{ path('payement' , {id: app.session.get('user_name').id}) }}">
+                          <label>Numero compte Bancaire</label>
+                          <input type="text" name="compte" required="" class="form-control"><br>
+                          <input type="hidden" name="subscription" value="{{ abonnement.id }}">
+                          <label>Montant</label>
+                          <input type="text" name="montant" required="" class="form-control"><br>
+                    <div class="modal-footer justify-content-between">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                      <button type="submit" class="btn btn-{{couleurbtn[i]}}">Enregistrer</button>
+                    </div>
+                    </form>
+                    </div>
+                 </div>
+                </div>
+            </div>
+            <!-- modal abonnement fin -->
+            <!-- abonnement fin -->
+          </div>
+            {% endfor %}
+          </div>
+                    </div>
+                </div>
+                </div>
+                </article>
+                </main>
+                </div>
+                {{ include('publique/layout/aside-bar.html.twig') }}
+            </div>
+        </div>
+    </div>
+    {{ include('publique/layout/footer.html.twig') }}
+    <a id="toTop" class="go-to-top" href="#" title="Go to Top"> <i class="fa fa-angle-double-up"></i> </a>
+</div>
+<div style="position:fixed;top:10px;right:8%;z-index:999999;" id="gtranslate_wrapper">
+        {# <span class="gsatelites"></span>
+        <span class="gglobe"></span> #}
+    {{ include('publique/layout/js-code.html.twig') }}
+</div>
+</body>
+</html>
