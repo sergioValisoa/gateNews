@@ -1,0 +1,101 @@
+{{ include('publique/layout/header.html.twig') }}
+<link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
+<body class="home blog custom-background wp-custom-logo wp-embed-responsive hfeed ct-full-layout ct-sticky-sidebar right-sidebar" itemtype="https://schema.org/Blog" itemscope>
+<div id="page" class="site">
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+    </div>
+    {{ include('publique/layout/header2.html.twig') }}
+    <div id="content" class="site-content">
+   
+        <div class="container-inner ct-container-main clearfix">
+            <div class="front-page-content-wrapper">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main">
+                        <article id="" class="page type-page status-publish" itemtype="" itemscope="">
+                        <div class="refined-magazine-content-container refined-magazine-no-thumbnail">
+                        <div class="refined-magazine-content-area">
+                        <header class="entry-header">
+                            <h1 class="entry-title" itemprop="headline">Modification</h1>
+                        </header>
+                    <div class="entry-content">
+                        <div class="wpforms-container wpforms-container-full" id="">
+            {% if msg != null %}
+                <div class="alert alert-danger alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                  <h5><i class="icon fas fa-check"></i>Erreur</h5>                
+                    {{ msg }}                 
+                </div>
+            {% endif %}
+            <form name="gn_admin_account" method="post" id="form" enctype="multipart/form-data">
+                <div class="wpforms-field-container">
+                        <div id="" class="" data-field-id="">
+                            <div class="">
+                  {{form_row(form_user.userName)}}
+                  {{form_row(form_user.userFullname)}}
+                  {{form_row(form_user.userAdress)}}
+                  {{form_row(form_user.userEmail)}}
+                  <div>
+                      <label>Ancien mot de passe</label>
+                      <input type="password" name="old_password" class="form-control">
+                  </div>
+                  {{form_row(form_user.userPassword)}}
+                  {{form_row(form_user.imageFile)}}
+                            {% if user.usrPhoto %}
+                                <div class="col-md-2 col-lg-2 col-xs-2 blc-image">
+                                        <span class="delete-image pull-right">
+                                            <a href="javascript:void(0);" id="file-{{ user.id }}"
+                                               onClick="deleteFile({{ user.id }}, $(this));" class="btn_effacer"
+                                               ajax-url="{{ path('user_delete_image_ajax') }}">
+                                                
+                                            </a>
+                                        </span>
+                                    
+                                </div>
+                            {% endif %}
+                        
+                </div>
+                <!-- /.card-body -->
+
+                <input type="hidden" name="user_connected" value="">
+                            <button type="submit" id="toastsDefaultSuccess" class="btn btn-danger" data-alt-text="Envoi..." data-submit-text="Envoyer" aria-live="assertive" value="wpforms-submit" class="btn btn-danger">Envoyer</button>
+                               
+                    </div>
+                </div>
+              </form>
+
+                </div>
+                </div>
+                </div>
+                </div>
+                </article>
+                </main>
+                </div>
+                {{ include('publique/layout/aside-bar.html.twig') }}
+            </div>
+        </div>
+    </div>
+    {{ include('publique/layout/footer.html.twig') }}
+    <a id="toTop" class="go-to-top" href="#" title="Go to Top"> <i class="fa fa-angle-double-up"></i> </a>
+</div>
+<div style="position:fixed;top:10px;right:8%;z-index:999999;" id="gtranslate_wrapper">
+        <span class="gsatelites"></span>
+        <span class="gglobe"></span>
+        {{ include('publique/layout/js-code.html.twig') }}
+        <script src="{{ asset('assets/plugins/toastr/toastr.min.js') }}"></script>
+        
+        </script>
+        <script type="text/javascript">
+            
+                $('#form').submit(function() {
+              $(document).Toasts('create', {
+                class: 'bg-success',
+                title: 'Succès',
+                subtitle: '',
+                body: 'Modifier avec succès'
+              })
+            });
+        </script>     
+</div>
+</body>
+</html>

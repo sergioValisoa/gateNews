@@ -1,0 +1,93 @@
+{% set menu_country        = true %}
+{{ include('admin/layout/header.html.twig') }}
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+    <!-- Navbar -->
+    {{ include('admin/layout/nav-bar.html.twig') }}
+
+    <!-- Main Sidebar Container -->
+    {{ include('admin/layout/aside-bar.html.twig') }}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Gestion des pays</h1>
+                        {% for flashMessage in app.session.flashbag.get('success') %}
+                            <div class="callout callout-success">
+                                {{ flashMessage }}
+                            </div>
+                        {% endfor %}
+                        {% for flashMessage in app.session.flashbag.get('error') %}
+                            <div class="callout callout-danger">
+                                {{ flashMessage }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ path('country') }}">Créer un pays</a></li>
+                            <li class="breadcrumb-item active">Liste des pays</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- /.card -->
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Pays</h2>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+
+                                <table id="post" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Pays</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for requete in data %}
+                                        <tr>
+                                            <td>{{ requete.countryName }}</td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a href="{{path('updateCountry',{id:requete.id}) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                                    <a href="{{ path('deleteCountry',{id: requete.id}) }}" class="btn btn-danger toastrDefaultSuccess"><i class="fas fa-trash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    {{ include('admin/layout/footer.html.twig') }}
+</body>
+</html>

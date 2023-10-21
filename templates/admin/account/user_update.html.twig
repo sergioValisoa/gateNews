@@ -1,0 +1,66 @@
+{% set menu_account_admin        = true %}
+{{ include('admin/layout/header.html.twig') }}
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+<!-- Navbar nampidirina -->
+{{ include('admin/layout/nav-bar.html.twig') }}
+
+<!-- aside nampidirina -->
+{{ include('admin/layout/aside-bar.html.twig') }}
+
+  <div class="content-wrapper">
+            
+    <section class="content">
+      <div class="container-fluid">
+         <div class="row">
+           <div class="col-lg-12">
+             <div class="card card-pink mt-3">
+              <div class="card-header">
+                <h2 class="card-title">Modifier un utilisateur</h2>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              {{ form_start(form) }}
+                <div class="card-body">
+                  {{form_widget(form)}}
+                    <div class="row">
+                        <div class="form-group">
+                            {% if user.usrPhoto %}
+                                <div class="col-md-2 col-lg-2 col-xs-2 blc-image">
+                                        <span class="delete-image pull-right">
+                                            <a href="javascript:void(0);" id="file-{{ user.id }}"
+                                               onClick="deleteFile({{ user.id }}, $(this));" class="btn_effacer"
+                                               ajax-url="{{ path('user_delete_image_ajax') }}">
+                                                <span>
+                                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                                </span>
+                                            </a>
+                                        </span>
+                                    <div class="image-container-block">
+                                        <img class="img-vignette img-responsive" src="{{ user.usrPhoto | imagine_filter('thumbnail_list') }}" />
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-danger">Modifier</button>
+                </div>
+              {{form_end(form)}}
+            </div>
+                
+              
+           </div>
+         </div>      
+      </div>
+    </section>
+ 
+  </div>
+{{ include('admin/layout/footer.html.twig') }}  
+  
+</body>
+</html>
