@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registration</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{{ asset('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
+</head>
+<body class="hold-transition register-page">
+<div class="register-box">
+  <div class="register-logo">
+    <b>Compte</b>
+  </div>
+
+  <div class="card">
+    <div class="card-body register-card-body">
+      <p class="login-box-msg">Créer un compte</p>
+
+      <form method="post" enctype="multipart/form-data" id="FormRegistration">
+        <div class="mb-1">
+          {{ form_row(form_user.userFullname) }}
+       
+        </div>
+        <div class="mb-1">
+          {{ form_row(form_user.userName) }}
+          
+        </div>
+        <div class="form-group">
+            <div class="mb-1">
+              {{ form_row(form_user.userEmail) }}
+              
+            </div>
+        </div>
+
+        <div class="form-group">
+          <div class="mb-1">
+            {{ form_row(form_user.userPassword) }}
+            
+          </div>
+        </div>
+        <label>Confirmer</label>
+        <div class="input-group mb-1">
+                
+          <input type="password" name="user_cf_password" class="form-control" placeholder="Retype password">
+          
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="mb-1">
+          {{ form_row(form_user.imageFile) }}
+          
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+              <label for="agreeTerms">
+               J'accepte les <a href="#">conditions</a>
+              </label>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Enregister</button>
+          </div>
+          <!-- /.col -->
+        </div>
+    </form>
+
+
+      <a href="{{path('auth')}}" class="text-center">j'ai déjà un compte</a>
+    </div>
+    <!-- /.form-box -->
+  </div><!-- /.card -->
+</div>
+<!-- /.register-box -->
+
+<script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+<script src="{{ asset('assets/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/jquery-validation/additional-methods.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
+<script src="{{ asset('assets/dist/js/demo.js') }}"></script>
+<!-- Page specific script -->
+<script>
+$(function () {
+  $('#FormRegistration').validate({
+    rules: {
+      user_email: {
+        required: true,
+        email: true,
+      },
+      user_password: {
+        required: true,
+        minlength: 6,
+        // equalTo: user_cf_password
+      }
+      
+    },
+    messages: {
+      user_email: {
+        required: "Veuiller entrer votre email",
+        email: "Entrer un email valide"
+      },
+      user_password: {
+        required: "Veuiller saisir votre mot de passe",
+        minlength: "Le mot de passe doit contenir aux moins six caractères"
+        // equalTo: "mot de passe doit être égal"
+      }
+    },
+    errorElement: 'span',
+    errorPlacement: function (error, element) {
+      error.addClass('invalid-feedback');
+      element.closest('.form-group').append(error);
+    },
+    highlight: function (element, errorClass, validClass) {
+      $(element).addClass('is-invalid');
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $(element).removeClass('is-invalid');
+    }
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+{{ include('admin/layout/header.html.twig') }}
+<body class="hold-transition sidebar-mini layout-fixed">
+
+    <!-- Navbar nampidirina -->
+    {{ include('journalist/layout/nav-bar.html.twig') }}
+
+        <section class="content">
+            <div class="container-fluid">
+
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <h1 class="m-0">Commentaire de l'article</h1>
+                                <h2 class="m-0">{{ post.postTitle }}</h2>
+                            </div><!-- /.col -->
+                            <div class="col-sm-6">
+                                <ol class="breadcrumb float-sm-right">
+                                    <li class="breadcrumb-item"><a href="{{ path('addCommentJour', {'id': post.id}) }}">Ajouter commentaire</a></li>
+                                    
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-olive mt-3">
+                    <div class="card-header">
+                        <h3 class="card-title">Liste des commentaire</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="post" class="table table-bordered table-striped">
+                            <thead>
+                            <tr align="center">
+                                <th>Contenu</th>
+                                <th>Utilisateur</th>
+                                <th>Arcticle</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+
+                            {% for comment in comments%}
+                                <tr>
+                                    <td>{{comment.PostCommentContent}}</td>
+                                    <td>{{comment.User.UserName}}</td>
+                                    <td>{{comment.Post.postTitle}}</td>
+                                    <td align="center">
+                                        <div class="btn-group">
+                                            <a href="#" onclick="event.preventDefault();confirm('Etes vous sur de supprimer cette commentaire') && document.getElementById('js-id-delete').submit();" class="btn btn-danger"><span class="fas fa-trash"></span></a>
+
+                                                <form id="js-id-delete" action="{{ path('deleteComment', {id: comment.id}) }}" style="display:none" method="POST">
+                                                  
+                                                  <input type="hidden" name="csrf_token" value="{{ csrf_token('comment_delete') }}">  
+                                                </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                           {% endfor %}
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+        </section>
+
+
+   <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/jquery.dataTables.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/jszip/jszip.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+<script>
+  $(function () {
+    $("#post").DataTable({
+      "responsive": true, "lengthChange": false, "ordering": true, "autoWidth": false,
+      "buttons": ["csv", "excel", "pdf"]
+    }).buttons().container().appendTo('#post_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+
+</body>
+</html>

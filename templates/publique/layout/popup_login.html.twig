@@ -1,0 +1,99 @@
+<div class="xoo-el-container" id="xoo-el-container" style="visibility: hidden;">
+    <div class="xoo-el-opac">
+    </div>
+    <div class="xoo-el-modal">
+        <div class="xoo-el-inmodal">
+            <span class="xoo-el-close xoo-el-icon-cancel-circle">
+            </span>
+            <div class="xoo-el-wrap">
+                <div class="xoo-el-sidebar">
+                </div>
+                <div class="xoo-el-srcont">
+                    <div class="xoo-el-main">
+                        <div class="xoo-el-form-container xoo-el-form-popup" data-active="login">
+                            <div class="xoo-el-header">
+
+                                <ul class="xoo-el-tabs">
+                                    <li data-tab="login" class="xoo-el-login-tgr">Se connecter</li>
+                                    <li data-tab="" class=""><a href="{{ path('create_account') }}">S'inscrire gratuitement</a></li>
+                                </ul>
+                            </div>
+                            <div data-section="login" class="xoo-el-section">
+                                <div class="xoo-el-fields">
+                                    <div class="xoo-el-notice">
+                                    </div>
+
+                                    <p style="border:1px solid red; background-color: #990033;display: none;color:white;" id="content-msg-outer" align="center" class="form-control">
+                                        <span align="center"><b id="content-msg"></b></span>
+                                    </p><br>
+                                    <!-- form login start-->
+                                    <form  method="POST" action="">
+                                        <div class="xoo-aff-group xoo-el-username_cont">
+                                            <div class="xoo-aff-input-group">
+                                                <span class="xoo-aff-input-icon far fa-user"></span>
+                                                <input type="text" class="xoo-aff-required xoo-aff-text" id="user_email" placeholder="Email"  value="" autocomplete="email" name="user_email" required="	"/>
+                                            </div>
+                                        </div>
+                                        <div class="xoo-aff-group xoo-el-password_cont">
+                                            <div class="xoo-aff-input-group">
+                                                <span class="xoo-aff-input-icon fas fa-key"></span>
+                                                <input type="password" id="user_password" class="xoo-aff-required xoo-aff-password" name="user_password" placeholder="Mot de passe"  value="" required="	"/>
+                                            </div>
+                                        </div>
+                                        <div class="xoo-aff-group xoo-el-login-btm-fields"> <label class="xoo-el-form-label"> <input type="checkbox" name="xoo-el-rememberme" value="forever" />
+                                                <span>Se souvenir de moi</span> </label>
+                                            <a class="xoo-el-lostpw-tgr">Mot de passe oublié?</a>
+                                        </div>
+                                        <button type="submit" data-urlredirect="{{ path('home') }}" id="login-submit" class="button btn xoo-el-action-btn xoo-el-login-btn" >Se connecter</button>
+                                        <div style="width: 200px;height: 200px;">
+                                            <div id="gn-loader" style="display: none;">
+                                                <img width="100" height="100" src="{{ asset('front/images/loader.gif') }}" alt="loader" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!-- form login end-->
+
+                                </div>
+
+                            </div>
+                            <div data-section="register" class="xoo-el-section">
+                                <div class="xoo-el-fields">
+                                    <div class="xoo-el-notice">
+                                    </div>
+                                    <!-- form register start-->
+
+                                    <!-- form register end -->
+                                </div>
+                            </div>
+                            <div data-section="lostpw" class="xoo-el-section">
+                                <div class="xoo-el-fields">
+                                    <div class="xoo-el-notice">
+                                    </div>
+                                    <!-- form recover pwd start-->
+                                    <form class="xoo-el-action-form xoo-el-form-lostpw">
+                                        <span class="xoo-el-form-txt">Lost your password? Please enter your username or email address. You will receive a link to create a new password via email.</span>
+                                        <div class="xoo-aff-group user_login_cont">
+                                            <div class="xoo-aff-input-group">
+                                                <span class="xoo-aff-input-icon fas fa-key"></span>
+                                                <input type="text" class="xoo-aff-required xoo-aff-text" name="user_login" placeholder="Username / Email"  value="" required="	"/>
+
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="_xoo_el_form" value="lostPassword">
+                                        <input type="hidden" name="_wp_http_referer" value="/" />
+                                        <button type="submit" class="button btn xoo-el-action-btn xoo-el-lostpw-btn">Email Reset Link</button>
+                                    </form>
+                                    <!-- form recover pwd end -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var url_login = "{{ path('app_login') }}";
+</script>
+<script src="{{ asset('assets/custom/js/popup_login.js') }}"></script>

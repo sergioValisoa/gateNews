@@ -1,0 +1,108 @@
+security:
+  encoders:
+    App\Entity\GnUser: auto
+  enable_authenticator_manager: true
+  # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
+  password_hashers:
+    Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: "auto"
+  # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+  providers:
+    nataoko:
+      entity:
+        class: 'App\Entity\GnUser'
+        property: "userEmail"
+    users_in_memory: { memory: null }
+    front:
+      entity:
+        class: 'App\Entity\GnUser'
+        property: "userEmail"
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: true
+    main:
+      lazy: true
+      provider: nataoko
+      entry_point: App\Security\AuthenticationEntryPoint
+      json_login:
+        check_path: app_login
+        username_path: email
+        password_path: password
+      logout:
+        path: logout
+      remember_me:
+        secret: "%kernel.secret%"
+        lifetime: 804800
+        path: /
+      custom_authenticators: [App\Security\LoginFormAuthenticator]
+    google:
+      pattern: connect/google/
+      provider: front
+      stateless: true
+      custom_authenticators: [App\Security\GoogleAuthenticator]
+      # activate different ways to authenticate
+      # https://symfony.com/doc/current/security.html#the-firewall
+
+      # https://symfony.com/doc/current/security/impersonating_user.html
+      # switch_user: true
+
+  # Easy way to control access for large sections of your site
+
+  access_control:
+    # restriction des pages admins
+    - { path: ^/admin, roles: ROLE_ADMIN }
+    - { path: ^/account, roles: ROLE_ADMIN }
+    - { path: ^/account_admin, roles: ROLE_ADMIN }
+    - { path: ^/update_user/^, roles: ROLE_ADMIN }
+    - { path: ^/delete-image, roles: ROLE_ADMIN }
+    - { path: ^/delete_user/^, roles: ROLE_ADMIN }
+    - { path: ^/approuve_comment, roles: ROLE_ADMIN }
+    - { path: ^/approuved_comment/^, roles: ROLE_ADMIN }
+    - { path: ^/approuve_post, roles: ROLE_ADMIN }
+    - { path: ^/approuved_post/^, roles: ROLE_ADMIN }
+    - { path: ^/message_nousContacter, roles: ROLE_ADMIN }
+    - { path: ^/messageNousContacter/^, roles: ROLE_ADMIN }
+    - { path: ^/delete_msg/^, roles: ROLE_ADMIN }
+    - { path: ^/category/createCategory, roles: ROLE_ADMIN }
+    - { path: ^/category/readCategory, roles: ROLE_ADMIN }
+    - { path: ^/category/deleteAction/^, roles: ROLE_ADMIN }
+    - { path: ^/category/updateAction/^, roles: ROLE_ADMIN }
+    - { path: ^/comment/addComment/^, roles: ROLE_ADMIN }
+    - { path: ^/comment/readComment/^, roles: ROLE_ADMIN }
+    - { path: ^/comment/deleteComment/^, roles: ROLE_ADMIN }
+    - { path: ^/comment/deleteComment/^, roles: ROLE_JOURNALIST }
+    - { path: ^/country/createCountry, roles: ROLE_ADMIN }
+    - { path: ^/country/readCountry, roles: ROLE_ADMIN }
+    - { path: ^/country/deleteCountry/^, roles: ROLE_ADMIN }
+    - { path: ^/country/updateCountry/^, roles: ROLE_ADMIN }
+    - { path: ^/add_post, roles: ROLE_ADMIN }
+    - { path: ^/list_post, roles: ROLE_ADMIN }
+    - { path: ^/delete_post/^, roles: ROLE_ADMIN }
+    - { path: ^/update_post/^, roles: ROLE_ADMIN }
+    # restriction des pages users
+    - { path: ^/readMore/^, roles: ROLE_USER }
+    - { path: ^/readMore/^, roles: ROLE_ADMIN }
+    - { path: ^/readMore/^, roles: ROLE_JOURNALIST }
+    - { path: ^/readMore/^, roles: ROLE_ABONNE_SIMPLE }
+    - { path: ^/readMore/^, roles: ROLE_ABONNE_PREMIUM }
+    - { path: ^/readMore/^, roles: ROLE_ABONNE_VIP }
+    - { path: ^/delete-image, roles: ROLE_USER }
+    - { path: ^/delete-image, roles: ROLE_ABONNE_SIMPLE }
+    - { path: ^/delete-image, roles: ROLE_ABONNE_PREMIUM }
+    - { path: ^/delete-image, roles: ROLE_ABONNE_VIP }
+    - { path: ^/update_users/^, roles: ROLE_USER }
+    - { path: ^/update_users/^, roles: ROLE_JOURNALIST }
+    - { path: ^/update_users/^, roles: ROLE_ABONNE_SIMPLE }
+    - { path: ^/update_users/^, roles: ROLE_ABONNE_PREMIUM }
+    - { path: ^/update_users/^, roles: ROLE_ABONNE_VIP }
+    # resctriction des pages journalist
+
+    - { path: ^/journalist/articles, roles: ROLE_JOURNALIST }
+    - { path: ^/journalist/listes, roles: ROLE_JOURNALIST }
+    - { path: ^/update_postJour/^, roles: ROLE_JOURNALIST }
+    - { path: ^/comment/readCommentJour/^, roles: ROLE_JOURNALIST }
+    - { path: ^/comment/addCommentJour/^, roles: ROLE_JOURNALIST }
+
+    # - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    # - { path: ^/readMore/^, roles: ROLE_NO_ACCESS }
+  # access_denied_url: /logout

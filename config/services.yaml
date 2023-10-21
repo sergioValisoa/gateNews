@@ -1,0 +1,64 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+parameters:
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/Tests/'
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+    gn.manager.country:
+        class: App\Service\MetierManagerBundle\Metier\GnCountry\ServiceMetierGnCountry
+        public: true
+
+    gn.manager.post:
+        class: App\Service\MetierManagerBundle\Metier\GnPost\ServiceMetierGnPost
+        public: true
+
+    gn.manager.account:
+        class: App\Service\MetierManagerBundle\Metier\GnAccount\ServiceMetierGnAccount
+        public: true
+
+    gn.manager.utils:
+        class: App\Service\MetierManagerBundle\Metier\Utils\ServiceMetierUtils
+        public: true
+
+    gn.manager.user.upload:
+        class: App\Service\MetierManagerBundle\Metier\Upload\UploadManager
+        arguments: ['@doctrine.orm.entity_manager','%kernel.project_dir%']
+        public: true
+
+    App\Service\MetierManagerBundle\Metier\GnCountry\ServiceMetierGnCountry:
+        alias: gn.manager.country
+
+    App\Service\MetierManagerBundle\Metier\GnPost\ServiceMetierGnPost:
+        alias: gn.manager.post
+
+    App\Service\MetierManagerBundle\Metier\GnAccount\ServiceMetierGnAccount:
+        alias: gn.manager.account
+
+    App\Service\MetierManagerBundle\Metier\Utils\ServiceMetierUtils:
+        alias: gn.manager.utils
+
+    App\Service\MetierManagerBundle\Metier\Upload\UploadManager:
+        alias: gn.manager.user.upload
+
+    Knp\DoctrineBehaviors\Contract\Entity\TranslationInterface:
+        public: true
+        autowire: true
