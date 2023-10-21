@@ -1,0 +1,97 @@
+{% set active = 'active' %}
+{% if is_granted('ROLE_ADMIN') %}
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="{{ path('admin') }}" class="brand-link">
+<img src="{{ asset('images/gate-company.jpg') | imagine_filter('BO_LOGO_GCI') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+
+    <span class="brand-text font-weight-light">Gate Of Africa</span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        {% if app.user.usrPhoto is defined and app.user.usrPhoto is not empty %}
+            <img src="{{ vich_uploader_asset(app.user, 'imageFile') }}" class="img-circle elevation-2" alt="User Image C">
+        {% else %}
+<img src="{{ asset('images/user-default-image.png') }}" class="img-circle elevation-2" alt="User Image">
+
+        {% endif %}
+      </div>
+      <div class="info">
+        <a href="#" class="d-block">{{ app.user.userFullname }}</a>
+      </div>
+    </div>
+
+    <!-- SidebarSearch Form -->
+    <div class="form-inline">
+      <div class="input-group" data-widget="sidebar-search">
+        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-sidebar">
+            <i class="fas fa-search fa-fw"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+	<!-- Sidebar Menu -->
+	<nav class="mt-2">
+		<ul
+			class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+			<!-- Add icons to the links using the .nav-icon class
+																																																																																																												             with font-awesome or any other icon font library -->
+			<li class="nav-item menu-open">
+				<a href="#" class="nav-link active">
+
+					<p>
+						<i class="fas fa-bars"></i>
+						&nbsp;	Menu
+						<i class="right fas fa-angle-left"></i>
+					</p>
+				</a>
+				<ul class="nav nav-treeview">
+					<li class="nav-item">
+						<a href="{{ path('list_post') }}" class="nav-link  {% if menu_post is defined %}{{ active }}{% endif %}">
+							<p>
+								<i class="fas fa-newspaper"></i>
+								&nbsp; Actualités</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{ path('account_list') }}" class="nav-link {% if menu_account_admin is defined %}{{ active }}{% endif %}">
+
+							<p>
+								<i class="fas fa-user"></i>
+								&nbsp; Utilisateurs</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{ path('readCategory') }}" class="nav-link {% if menu_category is defined %}{{ active }}{% endif %}">
+
+							<p>
+								<i class="fas fa-list"></i>
+								&nbsp; Catégories</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{ path('readCountry') }}" class="nav-link {% if menu_country is defined %}{{ active }}{% endif %}">
+
+							<p>
+								<i class="fas fa-flag"></i>
+								&nbsp; Pays</p>
+						</a>
+					</li>
+				</ul>
+			</li>
+		</li>
+	</ul>
+</nav>
+
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>
+{% endif %}

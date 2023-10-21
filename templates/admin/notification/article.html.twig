@@ -1,0 +1,116 @@
+{{ include('admin/layout/header.html.twig') }}
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+<!-- Navbar nampidirina -->
+{{ include('admin/layout/nav-bar.html.twig') }}
+
+<!-- aside nampidirina -->
+{{ include('admin/layout/aside-bar.html.twig') }}
+
+  <div class="content-wrapper">
+   
+
+    <section class="content">
+      <div class="container-fluid">
+
+        <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Articles</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ path('list_post') }}">Listes des articles</a></li>
+              <li class="breadcrumb-item active">Admin</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+         <div class="card card-pink mt-3">
+              <div class="card-header">
+                <h3 class="card-title">Liste des articles non approuvé</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="post" class="table table-bordered table-striped">
+                  <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Article</th>
+                        <th>Utilisateur</th>
+                        <th>Date d'envoi</th>
+                        <th>Actions</th>
+                      </tr>
+                  </thead>
+                      <tbody>
+
+
+                 {% for post in posts %}
+                    <tr>
+                          <td>{{post.id}}</td>
+                          <td>{{post.postTitle}}</td>
+                          <td>{{post.user.userName}}</td>
+                          <td>{{post.postCreatedAt|date|format_datetime(pattern="dd LLLL Y HH:mm:ss",locale='fr')}}</td>
+                         
+                          <td>
+                              <div class="btn-group ml-5">
+                               
+                                    <a href="{{ path('update_post',{'id': post.id}) }}" class="btn btn-info"><span class="fas fa-edit"></span></a>
+                                    <a href="{{ path('approuved_post',{'id': post.id}) }}" title="approuvé" class="btn btn-success"><span class="fas fa-check"></span></a>
+                                    <a href="{{ path('delete_post',{'id': post.id}) }}" title="Supprimer" class="btn btn-danger delete_article"><span class="fas fa-trash"></span></a>
+                                    
+                              </div>
+                          </td>
+                    </tr>
+                {% endfor %}  
+                            
+                      
+                      </tbody>
+                  
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>     
+      </div>
+    </section>
+ 
+  </div>
+<script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{{ asset('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+
+<script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+
+<script src="{{ asset('assets/plugins/datatables/jquery.dataTables.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+
+
+
+<script src="{{ asset('assets/dist/js/adminlte.js') }}"></script>
+
+<script src="{{ asset('assets/dist/js/demo.js') }}"></script>
+
+<script src="{{ asset('assets/dist/js/pages/dashboard.js') }}"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+        $("#post").DataTable({
+          "responsive": true, "lengthChange": false,  "autoWidth": false, order: [[0, 'desc']]
+        });
+        $(".delete_article").click(function (e) {
+          return confirm("Etes-vous sûr de vouloir supprimer cet article?")
+        });
+  });
+</script>
+  
+</body>
+</html>
