@@ -1,0 +1,136 @@
+{{ include('admin/layout/header.html.twig') }}
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+<!-- Navbar nampidirina -->
+{{ include('admin/layout/nav-bar.html.twig') }}
+
+<!-- aside nampidirina -->
+{{ include('admin/layout/aside-bar.html.twig') }}
+
+  <div class="content-wrapper">
+   
+
+    <section class="content">
+      <div class="container-fluid">
+
+        <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Messages</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ path('msgNousContacter') }}">Listes des messages</a></li>
+              <li class="breadcrumb-item active">Admin</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% if msg !=null %}
+        <div class="alert alert-success alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                  <h5><i class="icon fas fa-check"></i>Succès</h5>                
+                    {{ msg }}                 
+        </div>
+      {% endif %}
+         <div class="card card-pink mt-3">
+              <div class="card-header">
+                <h3 class="card-title">Liste des messages envoyées par les visiteurs</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="post" class="table table-bordered table-striped">
+                  <thead>
+                      <tr>
+                        <th>Nom</th>
+                        <th>Prenom</th>                      
+                        <th>Email</th>
+                        <th>Envoyer il y a</th>
+                        <th>Message</th>
+                        <th>Actions</th>
+                      </tr>
+                  </thead>
+                      <tbody>
+
+                        {% set i=0 %}
+                 {% for message in messages %}
+                    <tr>
+                      {% set i=i+1 %}
+                          <td>{{message.Nom}}</td>
+                          <td>{{message.Prenom}}</td>
+                          <td>{{message.Email}}</td>
+                          <td>{{message.CreatedAt|ago}}</td>
+                          <td>{{message.Message|u.truncate(10,'...')}}</td>
+                         
+                          <td align="center">
+                            <div class="btn-group">
+                            {% if message.isView == 1 %}
+                             <a href="{{ path('msgNousContacterView', {id:message.id }) }}" class="btn btn-info" alt="déjà vue"><span class="fas fa-eye"></span></a>
+                             
+                            {% else %}
+                              <a href="{{ path('msgNousContacterView', {id:message.id }) }}" class="btn btn-info" alt="non vue"><span class="fas fa-eye-slash"></span></a>
+                              
+                            {% endif %}
+                              <a href="#" onclick="event.preventDefault();confirm('Etes vous sur de supprimer ce message') && document.getElementById('js-id-delete-{{ i }}').submit();" class="btn btn-danger"><span class="fas fa-trash"></span></a>
+
+                                    <form id="js-id-delete-{{ i }}" action="{{ path('delete_message', {id: message.id}) }}" style="display:none" method="POST">
+                                    </form>
+                            </div>
+                          </td>
+                    </tr>
+                {% endfor %}  
+                            
+                      
+                      </tbody>
+                  
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>     
+      </div>
+    </section>
+ 
+  </div>
+<script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{{ asset('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+
+<script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+
+<script src="{{ asset('assets/plugins/datatables/jquery.dataTables.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+
+
+
+<script src="{{ asset('assets/dist/js/adminlte.js') }}"></script>
+
+<script src="{{ asset('assets/dist/js/demo.js') }}"></script>
+
+<script src="{{ asset('assets/dist/js/pages/dashboard.js') }}"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $("#post").DataTable({
+      "responsive": true, "lengthChange": false,  "autoWidth": false
+    });
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+</div>
+</body>
+</html>

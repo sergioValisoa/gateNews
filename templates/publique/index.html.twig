@@ -1,0 +1,1096 @@
+{% extends 'base_front.html.twig' %}
+{% set user_role = (app.user is defined and app.user is not null) ? 'authenticated' : 'undefined' %}
+{% block title %}{{ parent() }} Bienvenue sur Gate Of Africa {% endblock %}
+{% block body %}
+<body class="home blog custom-background wp-custom-logo wp-embed-responsive hfeed ct-full-layout ct-sticky-sidebar right-sidebar" itemtype="https://schema.org/Blog" itemscope>
+    <div id="page" class="site">
+        <div id="loader-wrapper">
+            <div id="loader"></div>
+        </div>
+        {{ include('publique/layout/header2.html.twig') }}
+        <div class="refined-magazine-featured-block refined-magazine-ct-row refined-awesome-carousel clearfix">
+            <div class="refined-magazine-col">
+                <ul class="ct-post-carousel slider hover-prev-next" data-slick='[]'>
+                    {% for allPost in postRead1 %}
+                    <li>
+                        <div class="featured-section-inner ct-post-overlay">
+                            <div class="post-thumb">
+                                <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">
+                                    {% if  allPost.postPhotos != null %}
+                                        <img src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('slick_thumb_slider_header')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('slick_thumb_slider_header') }} 700w, {{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('slick_thumb_slider_header') }}" sizes="(max-width: 700px) 402vw, 700px">
+                                    {% endif %}
+                                </a>
+                            </div>
+                            <div class="featured-section-details post-content">
+                                <div class="post-meta">
+                                    <span class="cat-links">
+                                        {% set postCategory = allPost.categories.getSnapshot %}
+                                        {% set j = -1 %}
+                                        {% for category in  postCategory %}
+                                            {% set j = j + 1 %}
+                                            <a class="ct-cat-item-85" href="{{ path('category_link',{slug: category.postCategoryUrl}) }}"  rel="category tag">{{ category.categoryTitle }}</a>
+                                        {% endfor %}
+                                    </span>
+                                </div>
+                                <h3 class="post-title">
+                                    <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+                                </h3>
+                                <div class="post-meta">
+                                    <span class="posted-on">
+                                        <i class="fa fa-calendar"></i>
+                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}" rel="bookmark">
+                                            <time class="entry-date published" datetime="2021-12-08T05:39:47+01:00" itemprop="datePublished">{{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                            <time class="updated" datetime="2021-12-08T05:39:57+01:00" itemprop="dateModified">8 décembre 2021</time>
+                                        </a>
+                                    </span>
+                                    <span class="min-read">
+                                        <i class="fa fa-clock-o" aria-hidden="true"></i>{{ allPost.postCreatedAt|ago }}</span>
+                                    <span class="byline">
+                                        <span class="author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+                                            <i class="fa fa-user"></i>
+                                            <a class="url fn n" href="{{ path('post_user',{id:allPost.user.id}) }}" rel="author">
+                                                <span class="author-name" itemprop="name">{{ allPost.user.userFullname }}</span>
+                                            </a>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="refined-magazine-col refined-magazine-col-2">
+                <div class="refined-magazine-inner-row clearfix">
+                    {% for allPost in postRead1 %}
+                    <div class="refined-magazine-col">
+                        <div class="featured-section-inner ct-post-overlay">
+                            <div class="post-thumb">
+                                <a href="{% if allPost.postUrl is defined and allPost.postUrl is not null %}{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}{% endif %}">
+                                    {% if  allPost.postPhotos != null %}
+                                        <img width="500" height="500" src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('featured')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('featured') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                                    {% endif %}
+                                </a>
+                            </div>
+                            <div class="featured-section-details post-content">
+                                <div class="post-meta">
+                                    <span class="cat-links">
+                                        {% set postCategory = allPost.categories.getSnapshot %}
+                                        {% set j = -1 %}
+                                        {% for category in  postCategory %}
+                                        {% set j = j + 1 %}
+                                        <a class="ct-cat-item-85" href="{{ path('category_link',{slug: category.postCategoryUrl}) }}"  rel="category tag">{{ category.categoryTitle }}</a>
+                                        {% endfor %}
+                                    </span>
+                                </div>
+                                <h3 class="post-title">
+                                    <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+                                </h3>
+                                <div class="post-meta">
+                                    <span class="posted-on"><i class="fa fa-calendar"></i>
+                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}" rel="bookmark">
+                                            <time class="entry-date published" datetime="datetime" itemprop="datePublished">{{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                            <time class="updated" datetime="datetime" itemprop="dateModified">{{ allPost.updatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                        </a>
+                                    </span>
+                                    <span class="min-read"><i class="fa fa-clock-o" aria-hidden="true"></i>{{ allPost.postCreatedAt|ago }}</span>
+                                    <span class="byline">
+                                        <span class="author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope><i class="fa fa-user"></i>
+                                            <a class="url fn n" href="{{ path('post_user',{id:allPost.user.id}) }}" rel="author">
+                                                <span class="author-name" itemprop="name">{{ allPost.user.userFullname }}</span>
+                                            </a>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="trending-wrapper">
+            <strong class="trending-title"> Fil d&#039;actu </strong>
+            <div class="trending-content trending-left">
+                {% for allPost in postRead2|slice(0, 5) %}
+                <a href="#">
+                    <span class="img-marq">
+                        {% if  allPost.postPhotos != null %}
+                            <img width="150" height="150" src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                        {% endif %}
+                    </span>{{ allPost.postTitle|raw }}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        <div id="content" class="site-content">
+            <div class="container-inner ct-container-main clearfix">
+                <div class="front-page-content-wrapper">
+                    <div id="primary" class="content-area">
+                        <main id="main" class="site-main">
+                            <section id="media_image-13" class="widget widget_media_image">
+                                <img width="300" height="150" src="{{ asset('front/images/gate-company.jpg') }}" class="image wp-image-4249  attachment-medium size-medium" alt="" loading="lazy" style="max-width: 100%; height: auto;" srcset="{{ asset('front/images/gate-company.jpg 300w') }}, {{ asset('front/images/gate-company.jpg 1024w') }}, {{ asset('front/images/gate-company.jpg 768w') }}, {{ asset('front/images/gate-company.jpg 1536w') }}, {{ asset('front/images/gate-company.jpg 1170w') }}, {{ asset('front/images/gate-company.jpg 1920w') }}" sizes="(max-width: 300px) 100vw, 300px"/>
+                            </section>
+                            <section id="refined-magazine-post-slider-1" class="widget refined-magazine-post-slider">
+                                <div class="title-wrapper cat-80">
+                                    {% if postReadDrct is not empty %}
+                                    {% for allPost in postReadDrct %}
+                                    <h2 class="widget-title">
+                                        <a href="{{ path('category_link',{slug: allPost.categories.getSnapshot[0].postCategoryUrl}) }}"> Gate Of Africa Live </a>
+                                    </h2>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="refined-magazine-slider-container">
+                                    <section class="section-slider">
+                                        <div class="header-carousel">
+                                            <ul class="ct-post-carousel slider"  data-slick='[]'>
+                                                {% for allPost in postReadDrct %}
+                                                <li>
+                                                    <div class="ct-carousel-inner carousel-thumbnail-block">
+                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">
+                                                            {% if  allPost.postPhotos != null %}
+                                                                <img src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('slick')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                                                            {% endif %}
+                                                        </a>
+                                                        <div class="slide-details">
+                                                            <div class="slider-content-inner">
+                                                                <div class="slider-content">
+                                                                    <div class="post-meta">
+                                                                        <span class="cat-links">
+                                                                            <a class="ct-cat-item-80" href="{{ path('category_link',{slug: allPost.categories.getSnapshot[0].postCategoryUrl}) }}"  rel="category tag">En direct</a>
+                                                                        </span>
+                                                                    </div>
+                                                                    <h2>
+                                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+                                                                    </h2>
+                                                                    <div class="post-meta">
+                                                                        <span class="posted-on"><i class="fa fa-calendar"></i>
+                                                                            <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}" rel="bookmark">
+                                                                                <time class="entry-date published" datetime="2021-06-04T14:17:28+02:00" itemprop="datePublished">{{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                                <time class="updated" datetime="2021-06-04T14:17:30+02:00" itemprop="dateModified">{{ allPost.updatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                            </a>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="overly"></div>
+                                                </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </section>
+                                </div>
+                            </section>
+                            <section id="refined-magazine-featured-post-2" class="widget refined-magazine-featured-post">
+                                <div class="title-wrapper cat-84">
+                                    {% if postReadEconomie is not empty %}
+                                    <h2 class="widget-title">
+                                        <a href="https://gate-news.com/index.php/category/economie/"> Economie </a>
+                                    </h2>
+                                    {% endif %}
+                                </div>
+                                <div class="ct-grid-post clearfix">
+                                    {% set j = 0 %}
+                                    {% for allPost in postReadEconomie %}
+                                        {% if j == 0 %}
+                                        <div class="ct-two-cols ct-first-column">
+                                            <section class="ct-grid-post-list">
+                                                <div class="post-thumb">
+                                                    <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">
+                                                        {% if  allPost.postPhotos != null %}
+                                                            <img width="783" height="450" src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumbnail_list')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                                                        {% endif %}
+                                                    </a>
+                                                </div>
+                                                <div class="post-content mt-10">
+                                                    <div class="post-meta">
+                                                    <span class="cat-links">
+                                                        {% set postCategory = allPost.categories.getSnapshot %}
+                                                        {% set j = -1 %}
+                                                        {% for category in  postCategory %}
+                                                            {% set j = j + 1 %}
+                                                            <a class="ct-cat-item-48" href="{{ path('category_link',{slug: category.postCategoryUrl}) }}"  rel="category tag">{{ category.categoryTitle }}</a>
+
+                                                        {% endfor %}
+                                                    </span>
+                                                    </div>
+                                                    <h3 class="post-title">
+                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+                                                    </h3>
+                                                    <div class="post-meta">
+                                                    <span class="posted-on"><i class="fa fa-calendar"></i>
+                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}" rel="bookmark">
+                                                            <time class="entry-date published" datetime="2021-11-16T05:40:49+01:00" itemprop="datePublished">{{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                            <time class="updated" datetime="2021-11-16T05:40:52+01:00" itemprop="dateModified">{{ allPost.updatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                        </a>
+                                                    </span>
+                                                    </div>
+                                                    <div class="post-excerpt"><p>{{ allPost.postContent|striptags|u.truncate(150,'...' )|raw }}</p></div>
+                                                </div>
+                                            </section>
+                                        </div>
+                                        {% endif %}
+                                        {% set j = j + 1 %}
+                                    {% endfor %}
+                                    <div class="ct-two-cols">
+                                        <div class="list-post-block">
+                                            <ul class="list-post">
+                                                {% set j = 0 %}
+                                                {% for allPost in postReadEconomie %}
+                                                    {% if j > 0 %}
+                                                {#  {% for allPost in postReadEconomie %} #}
+                                                    <li>
+                                                    <div class="post-block-style">
+                                                        <div class="post-thumb">
+                                                            <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">
+                                                                {% if  allPost.postPhotos != null %}
+                                                                    <img width="150" height="150" src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                                                                {% endif %}
+                                                            </a>
+                                                        </div>
+                                                        <div class="post-content">
+                                                            <div class="post-meta">
+                                                            <span class="cat-links">
+                                                                {% set postCategory = allPost.categories.getSnapshot %}
+                                                                {% set j = -1 %}
+                                                                {% for category in  postCategory %}
+                                                                    {% set j = j + 1 %}
+
+                                                                    <a class="ct-cat-item-85" href="{{ path('category_link',{slug: category.postCategoryUrl}) }}"  rel="category tag">{{ category.categoryTitle }}</a>
+
+                                                                {% endfor %}
+                                                            </span>
+                                                            </div>
+                                                            <h3 class="post-title">
+                                                                <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+                                                            </h3>
+                                                            <div class="post-meta">
+                                                            <span class="posted-on"><i class="fa fa-calendar"></i>
+                                                                <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}" rel="bookmark">
+                                                                    <time class="entry-date published" datetime="2021-11-10T05:58:04+01:00" itemprop="datePublished">{{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                    <time class="updated" datetime="2021-11-10T05:58:07+01:00" itemprop="dateModified">{{ allPost.updatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                </a>
+                                                            </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                {# {% endfor %} #}
+                                                    {% endif %}
+                                                    {% set j = j + 1 %}
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="refined-magazine-thumbnail-post-12" class="widget refined-magazine-thumbnail-post">
+                                <div class="title-wrapper cat-100">
+                                    {% if postReadBusiness is not empty %}
+                                    <h2 class="widget-title">
+                                        <a href="https://gate-news.com/index.php/category/business-intelligence/"> Business intelligence </a>
+                                    </h2>
+                                    {% endif %}
+                                </div>
+                                <div class="ct-grid-post clearfix">
+                                    {% for allPost in postReadBusiness %}
+                                        <div class="ct-two-cols">
+                                            <div class="list-post-block">
+                                                <div class="list-post">
+                                                    <div class="post-block-style">
+                                                        <div class="post-thumb">
+                                                            <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">
+                                                                {% if  allPost.postPhotos != null %}
+                                                                    <img width="150" height="150" src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                                                                {% endif %}
+                                                            </a>
+                                                        </div>
+                                                        <div class="post-content">
+                                                            <div class="post-meta">
+                                                            <span class="cat-links">
+                                                                {% set postCategory = allPost.categories.getSnapshot %}
+                                                                {% set j = -1 %}
+                                                                {% for category in  postCategory %}
+                                                                    {% set j = j + 1 %}
+
+                                                                    <a class="ct-cat-item-85" href="{{ path('category_link',{slug: category.postCategoryUrl}) }}"  rel="category tag">{{ category.categoryTitle }}</a>
+
+                                                                {% endfor %}
+                                                            </span>
+                                                            </div>
+                                                            <div class="featured-post-title">
+                                                                <h3 class="post-title">
+                                                                    <a  href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+                                                                </h3>
+                                                            </div>
+                                                            <div class="post-meta">
+                                                            <span class="posted-on"><i class="fa fa-calendar"></i>
+                                                                <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}" rel="bookmark">
+                                                                    <time class="entry-date published" datetime="2021-06-03T06:51:36+02:00" itemprop="datePublished">{{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                    <time class="updated" datetime="2021-06-03T06:52:48+02:00" itemprop="dateModified">3 juin 2021</time>
+                                                                </a>
+                                                            </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </section>
+                            <section id="refined_magazine_category_column_widget-7" class="widget refined-magazine-cat_column">
+                                <div class="block ct-cat-cols">
+                                    <div class="row clearfix">
+                                        <div class="ct-two-cols">
+                                            {% if postReadMarche is not empty %}
+                                            <h2 class="widget-title cat-94">
+                                                <a href="https://gate-news.com/index.php/category/marche-et-business/"> Marché et business </a>
+                                            </h2>
+                                            {% endif %}
+                                            {%  set j = 0 %}
+                                            {% for allPost in postReadMarche %}
+                                                {% if j== 0 %}
+                                                <div class="ct-post-overlay">
+                                                    <div class="post-thumb">
+                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">
+                                                            {% if  allPost.postPhotos != null %}
+                                                                <img width="720" height="450" src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('large_image_front')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('large_image_front') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                                                            {% endif %}
+                                                        </a>
+                                                    </div>
+                                                    <div class="post-content">
+                                                        <div class="post-meta">
+                                                        <span class="cat-links">
+                                                            {% set postCategory = allPost.categories.getSnapshot %}
+                                                            {% set j = -1 %}
+                                                            {% for category in  postCategory %}
+                                                                {% set j = j + 1 %}
+                                                                <a class="ct-cat-item-85" href="{{ path('category_link',{slug: category.postCategoryUrl}) }}"  rel="category tag">{{ category.categoryTitle }}</a>
+                                                            {% endfor %}
+                                                        </span>
+                                                        </div>
+                                                        <h3 class="post-title">
+                                                            <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+                                                        </h3>
+                                                        <div class="post-meta">
+                                                        <span class="posted-on"><i class="fa fa-calendar"></i>
+                                                            <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}" rel="bookmark">
+                                                                <time class="entry-date published" datetime="2021-11-30T11:38:59+01:00" itemprop="datePublished">{{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                <time class="updated" datetime="2021-11-30T11:39:01+01:00" itemprop="dateModified">{{ allPost.updatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                            </a>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                                {% set j = j + 1 %}
+                                            {% endfor %}
+                                            <div class="list-post-block">
+                                                <ul class="list-post">
+                                                    {%  set j = 0 %}
+                                                    {% for allPost in postReadMarche %}
+                                                        {% if j > 0 %}
+                                                        <li>
+                                                            <div class="post-block-style">
+                                                                <div class="post-thumb">
+                                                                    <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">
+                                                                        {% if  allPost.postPhotos != null %}
+                                                                            <img width="150" height="150" src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                                                                        {% endif %}
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-meta">
+                                                                    <span class="cat-links">
+                                                                        {% set postCategory = allPost.categories.getSnapshot %}
+                                                                        {% set j = -1 %}
+                                                                        {% for category in  postCategory %}
+                                                                            {% set j = j + 1 %}
+
+                                                                            <a class="ct-cat-item-85" href="{{ path('category_link',{slug: category.postCategoryUrl}) }}"  rel="category tag">{{ category.categoryTitle }}</a>
+
+                                                                        {% endfor %}
+                                                                    </span>
+                                                                    </div>
+                                                                    <h3 class="post-title">
+                                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+                                                                    </h3>
+                                                                    <div class="post-meta">
+                                                                    <span class="posted-on"><i class="fa fa-calendar"></i>
+                                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}" rel="bookmark">
+                                                                            <time class="entry-date published" datetime="2021-11-10T05:58:04+01:00" itemprop="datePublished">{{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                            <time class="updated" datetime="2021-11-10T05:58:07+01:00" itemprop="dateModified">{{ allPost.updatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                        </a>
+                                                                    </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        {% endif %}
+                                                        {% set j = j + 1 %}
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="ct-two-cols">
+                                            {% if postReadFinance is not empty %}
+                                            <h2 class="widget-title cat-97">
+                                                <a href="https://gate-news.com/index.php/category/finance-et-bourse/"> Finance et Bourse </a>
+                                            </h2>
+                                            {% endif %}
+                                            {%  set j = 0 %}
+                                            {% for allPost in postReadFinance %}
+                                                {% if j== 0 %}
+                                                <div class="ct-post-overlay">
+                                                    <div class="post-thumb">
+                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">
+                                                            {% if  allPost.postPhotos != null %}
+                                                                <img width="720" height="450" src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('large_image_front')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('large_image_front') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                                                            {% endif %}
+                                                        </a>
+                                                    </div>
+                                                    <div class="post-content">
+                                                        <div class="post-meta">
+                                                        <span class="cat-links">
+                                                            {% set postCategory = allPost.categories.getSnapshot %}
+                                                            {% set j = -1 %}
+                                                            {% for category in  postCategory %}
+                                                                {% set j = j + 1 %}
+
+                                                                <a class="ct-cat-item-85" href="{{ path('category_link',{slug: category.postCategoryUrl}) }}"  rel="category tag">{{ category.categoryTitle }}</a>
+
+                                                            {% endfor %}
+                                                        </span>
+                                                        </div>
+                                                        <h3 class="post-title">
+                                                            <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+                                                        </h3>
+                                                        <div class="post-meta">
+                                                        <span class="posted-on"><i class="fa fa-calendar"></i>
+                                                            <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}" rel="bookmark">
+                                                                <time class="entry-date published" datetime="2021-11-30T11:38:59+01:00" itemprop="datePublished">{{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                <time class="updated" datetime="2021-11-30T11:39:01+01:00" itemprop="dateModified">{{ allPost.updatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                            </a>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                                {% set j = j + 1 %}
+                                            {% endfor %}
+                                            <div class="list-post-block">
+                                                <ul class="list-post">
+                                                    {%  set j = 0 %}
+                                                    {% for allPost in postReadFinance %}
+                                                        {% if j > 0 %}
+                                                        <li>
+                                                            <div class="post-block-style">
+                                                                <div class="post-thumb">
+                                                                    <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">
+                                                                        {% if  allPost.postPhotos != null %}
+                                                                            <img width="150" height="150" src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                                                                        {% endif %}
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-meta">
+                                                                    <span class="cat-links">
+                                                                        {% set postCategory = allPost.categories.getSnapshot %}
+                                                                        {% set j = -1 %}
+                                                                        {% for category in  postCategory %}
+                                                                            {% set j = j + 1 %}
+
+                                                                            <a class="ct-cat-item-85" href="{{ path('category_link',{slug: category.postCategoryUrl}) }}"  rel="category tag">{{ category.categoryTitle }}</a>
+
+                                                                        {% endfor %}
+                                                                    </span>
+                                                                    </div>
+                                                                    <h3 class="post-title">
+                                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+                                                                    </h3>
+                                                                    <div class="post-meta">
+                                                                    <span class="posted-on"><i class="fa fa-calendar"></i>
+                                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}" rel="bookmark">
+                                                                            <time class="entry-date published" datetime="2021-11-10T05:58:04+01:00" itemprop="datePublished">{{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                            <time class="updated" datetime="2021-11-10T05:58:07+01:00" itemprop="dateModified">{{ allPost.updatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                        </a>
+                                                                    </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        {% endif %}
+                                                        {% set j = j + 1 %}
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gap-40"></div>
+                            </section>
+                            <section id="refined_magazine_category_column_widget-1" class="widget refined-magazine-cat_column">
+                                <div class="block ct-cat-cols">
+                                    <div class="row clearfix">
+                                        <div class="ct-two-cols">
+                                            {% if postReadTech is not empty %}
+                                            <h2 class="widget-title cat-85">
+                                                <a href="https://gate-news.com/index.php/category/high-tech/"> High-Tech </a>
+                                            </h2>
+                                            {% endif %}
+                                            {%  set k = 0 %}
+                                            {% for allPost in postReadTech %}
+                                                {% if k== 0 %}
+                                                <div class="ct-post-overlay">
+                                                    <div class="post-thumb">
+                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">
+                                                            {% if  allPost.postPhotos != null %}
+                                                                <img width="720" height="450" src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('large_image_front')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('large_image_front') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                                                            {% endif %}
+                                                        </a>
+                                                    </div>
+                                                    <div class="post-content">
+                                                        <div class="post-meta">
+                                                        <span class="cat-links">
+                                                            {% set postCategory = allPost.categories.getSnapshot %}
+                                                            {% set j = -1 %}
+                                                            {% for category in  postCategory %}
+                                                                {% set j = j + 1 %}
+
+                                                                <a class="ct-cat-item-85" href="{{ path('category_link',{slug: category.postCategoryUrl}) }}"  rel="category tag">{{ category.categoryTitle }}</a>
+
+                                                            {% endfor %}
+                                                        </span>
+                                                        </div>
+                                                        <h3 class="post-title">
+                                                            <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+                                                        </h3>
+                                                        <div class="post-meta">
+                                                        <span class="posted-on"><i class="fa fa-calendar"></i>
+                                                            <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}" rel="bookmark">
+                                                                <time class="entry-date published" datetime="2021-11-30T11:38:59+01:00" itemprop="datePublished">{{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                <time class="updated" datetime="2021-11-30T11:39:01+01:00" itemprop="dateModified">{{ allPost.updatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                            </a>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                                {% set k = k + 1 %}
+                                            {% endfor %}
+                                            <div class="list-post-block">
+                                                <ul class="list-post">
+                                                    {%  set k = 0 %}
+                                                    {% for allPost in postReadTech %}
+                                                        {% if k > 0 %}
+                                                        <li>
+                                                            <div class="post-block-style">
+                                                                <div class="post-thumb">
+                                                                    <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">
+                                                                        {% if  allPost.postPhotos != null %}
+                                                                            <img width="150" height="150" src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                                                                        {% endif %}
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-meta">
+                                                                    <span class="cat-links">
+                                                                        {% set postCategory = allPost.categories.getSnapshot %}
+                                                                        {% set j = -1 %}
+                                                                        {% for category in  postCategory %}
+                                                                            {% set j = j + 1 %}
+
+                                                                            <a class="ct-cat-item-85" href="{{ path('category_link',{slug: category.postCategoryUrl}) }}"  rel="category tag">{{ category.categoryTitle }}</a>
+
+                                                                        {% endfor %}
+                                                                    </span>
+                                                                    </div>
+                                                                    <h3 class="post-title">
+                                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+                                                                    </h3>
+                                                                    <div class="post-meta">
+                                                                    <span class="posted-on"><i class="fa fa-calendar"></i>
+                                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}" rel="bookmark">
+                                                                            <time class="entry-date published" datetime="2021-11-10T05:58:04+01:00" itemprop="datePublished">{{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                            <time class="updated" datetime="2021-11-10T05:58:07+01:00" itemprop="dateModified">{{ allPost.updatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                        </a>
+                                                                    </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        {% endif %}
+                                                        {% set k = k + 1 %}
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="ct-two-cols">
+                                            {% if postReadEntreprise is not empty %}
+                                            <h2 class="widget-title cat-99">
+                                                <a href="https://gate-news.com/index.php/category/entreprises/"> Entreprises </a>
+                                            </h2>
+                                            {% endif %}
+                                            {%  set k = 0 %}
+                                            {% for allPost in postReadEntreprise %}
+                                                {% if k== 0 %}
+                                                <div class="ct-post-overlay">
+                                                    <div class="post-thumb">
+                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">
+                                                            {% if  allPost.postPhotos != null %}
+                                                                <img width="720" height="450" src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('large_image_front')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('large_image_front') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                                                            {% endif %}
+                                                        </a>
+                                                    </div>
+                                                    <div class="post-content">
+                                                        <div class="post-meta">
+                                                        <span class="cat-links">
+                                                            {% set postCategory = allPost.categories.getSnapshot %}
+                                                            {% set j = -1 %}
+                                                            {% for category in  postCategory %}
+                                                                {% set j = j + 1 %}
+                                                                <a class="ct-cat-item-85" href="{{ path('category_link',{slug: category.postCategoryUrl}) }}"  rel="category tag">{{ category.categoryTitle }}</a>
+                                                            {% endfor %}
+                                                        </span>
+                                                        </div>
+                                                        <h3 class="post-title">
+                                                            <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+                                                        </h3>
+                                                        <div class="post-meta">
+                                                        <span class="posted-on"><i class="fa fa-calendar"></i>
+                                                            <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}" rel="bookmark">
+                                                                <time class="entry-date published" datetime="2021-11-30T11:38:59+01:00" itemprop="datePublished">{{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                <time class="updated" datetime="2021-11-30T11:39:01+01:00" itemprop="dateModified">{{ allPost.updatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                            </a>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                                {% set k = k + 1 %}
+                                            {% endfor %}
+                                            <div class="list-post-block">
+                                                <ul class="list-post">
+                                                    {%  set k = 0 %}
+                                                    {% for allPost in postReadEntreprise %}
+                                                        {% if k > 0 %}
+                                                        <li>
+                                                            <div class="post-block-style">
+                                                                <div class="post-thumb">
+                                                                    <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">
+                                                                        {% if  allPost.postPhotos != null %}
+                                                                            <img width="150" height="150" src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                                                                        {% endif %}
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-meta">
+                                                                    <span class="cat-links">
+                                                                        {% set postCategory = allPost.categories.getSnapshot %}
+                                                                        {% set j = -1 %}
+                                                                        {% for category in  postCategory %}
+                                                                            {% set j = j + 1 %}
+
+                                                                            <a class="ct-cat-item-85" href="{{ path('category_link',{slug: category.postCategoryUrl}) }}"  rel="category tag">{{ category.categoryTitle }}</a>
+
+                                                                        {% endfor %}
+                                                                    </span>
+                                                                    </div>
+                                                                    <h3 class="post-title">
+                                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+                                                                    </h3>
+                                                                    <div class="post-meta">
+                                                                    <span class="posted-on"><i class="fa fa-calendar"></i>
+                                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}" rel="bookmark">
+                                                                            <time class="entry-date published" datetime="2021-11-10T05:58:04+01:00" itemprop="datePublished">{{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                            <time class="updated" datetime="2021-11-10T05:58:07+01:00" itemprop="dateModified">{{ allPost.updatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                        </a>
+                                                                    </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        {% endif %}
+                                                        {% set k = k + 1 %}
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gap-40"></div>
+                            </section>
+                            <section id="refined_magazine_category_column_widget-9" class="widget refined-magazine-cat_column">{# Tourisme et culture #}
+                                <div class="block ct-cat-cols">
+                                    <div class="row clearfix">
+                                        <div class="ct-two-cols">
+                                            {% if postReadTourisme is not empty %}
+                                            <h2 class="widget-title cat-90">
+                                                <a href="https://gate-news.com/index.php/category/tourisme/"> Tourisme et Culture </a>
+                                            </h2>
+                                            {% endif %}
+                                            {%  set k = 0 %}
+                                            {% for allPost in postReadTourisme %}
+                                                {% if k == 0 %}
+                                                <div class="ct-post-overlay">
+                                                    <div class="post-thumb">
+                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">
+                                                            {% if  allPost.postPhotos != null %}
+                                                                <img width="720" height="450" src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('large_image_front')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('large_image_front') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                                                            {% endif %}
+                                                        </a>
+                                                    </div>
+                                                    <div class="post-content">
+                                                        <div class="post-meta">
+                                                        <span class="cat-links">
+                                                            {% set postCategory = allPost.categories.getSnapshot %}
+                                                            {% set j = -1 %}
+                                                            {% for category in  postCategory %}
+                                                                {% set j = j + 1 %}
+                                                                <a class="ct-cat-item-85" href="{{ path('category_link',{slug: category.postCategoryUrl}) }}"  rel="category tag">{{ category.categoryTitle }}</a>
+                                                            {% endfor %}
+                                                        </span>
+                                                        </div>
+                                                        <h3 class="post-title">
+                                                            <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+                                                        </h3>
+                                                        <div class="post-meta">
+                                                        <span class="posted-on"><i class="fa fa-calendar"></i>
+                                                            <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}" rel="bookmark">
+                                                                <time class="entry-date published" datetime="2021-11-30T11:38:59+01:00" itemprop="datePublished">{{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                <time class="updated" datetime="2021-11-30T11:39:01+01:00" itemprop="dateModified">{{ allPost.updatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                            </a>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                                {% set k = k + 1 %}
+                                            {% endfor %}
+                                            <div class="list-post-block">
+                                                <ul class="list-post">
+                                                    {%  set k = 0 %}
+                                                    {% for allPost in postReadTourisme %}
+                                                        {% if k > 0 %}
+                                                        <li>
+                                                            <div class="post-block-style">s
+                                                                <div class="post-thumb">
+                                                                    <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">
+                                                                        {% if  allPost.postPhotos != null %}
+                                                                            <img width="150" height="150" src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                                                                        {% endif %}
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-meta">
+                                                                    <span class="cat-links">
+                                                                        {% set postCategory = allPost.categories.getSnapshot %}
+                                                                        {% set j = -1 %}
+                                                                        {% for category in  postCategory %}
+                                                                            {% set j = j + 1 %}
+
+                                                                            <a class="ct-cat-item-85" href="{{ path('category_link',{slug: category.postCategoryUrl}) }}"  rel="category tag">{{ category.categoryTitle }}</a>
+
+                                                                        {% endfor %}
+                                                                    </span>
+                                                                    </div>
+                                                                    <h3 class="post-title">
+                                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+                                                                    </h3>
+                                                                    <div class="post-meta">
+                                                                    <span class="posted-on"><i class="fa fa-calendar"></i>
+                                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}" rel="bookmark">
+                                                                            <time class="entry-date published" datetime="2021-11-10T05:58:04+01:00" itemprop="datePublished">{{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                            <time class="updated" datetime="2021-11-10T05:58:07+01:00" itemprop="dateModified">{{ allPost.updatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                        </a>
+                                                                    </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        {% endif %}
+                                                        {% set k = k + 1 %}
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="ct-two-cols">
+                                            {% if postReadEnviron is not empty %}
+                                            <h2 class="widget-title cat-98">
+                                                <a href="https://gate-news.com/index.php/category/environnement/"> Environnement </a>
+                                            </h2>
+                                            {% endif %}
+                                            {%  set k = 0 %}
+                                            {% for allPost in postReadEnviron %}
+                                                {% if k == 0 %}
+                                                <div class="ct-post-overlay">
+                                                    <div class="post-thumb">
+                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">
+                                                            {% if  allPost.postPhotos != null %}
+                                                                <img width="720" height="450" src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('large_image_front')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile')| imagine_filter('large_image_front') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                                                            {% endif %}
+                                                        </a>
+                                                    </div>
+                                                    <div class="post-content">
+                                                        <div class="post-meta">
+                                                        <span class="cat-links">
+                                                            {% set postCategory = allPost.categories.getSnapshot %}
+                                                            {% set j = -1 %}
+                                                            {% for category in  postCategory %}
+                                                                {% set j = j + 1 %}
+
+                                                                <a class="ct-cat-item-85" href="{{ path('category_link',{slug: category.postCategoryUrl}) }}"  rel="category tag">{{ category.categoryTitle }}</a>
+
+                                                            {% endfor %}
+                                                        </span>
+                                                        </div>
+                                                        <h3 class="post-title">
+                                                            <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+                                                        </h3>
+                                                        <div class="post-meta">
+                                                        <span class="posted-on"><i class="fa fa-calendar"></i>
+                                                            <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}" rel="bookmark">
+                                                                <time class="entry-date published" datetime="2021-11-30T11:38:59+01:00" itemprop="datePublished">{{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                <time class="updated" datetime="2021-11-30T11:39:01+01:00" itemprop="dateModified">{{ allPost.updatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                            </a>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                                {% set k = k + 1 %}
+                                            {% endfor %}
+                                            <div class="list-post-block">
+                                                <ul class="list-post">
+                                                    {%  set k = 0 %}
+                                                    {% for allPost in postReadEnviron %}
+                                                        {% if k > 0 %}
+                                                        <li>
+                                                            <div class="post-block-style">
+                                                                <div class="post-thumb">
+                                                                    <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">
+                                                                        {% if  allPost.postPhotos != null %}
+                                                                            <img width="150" height="150" src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                                                                        {% endif %}
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-meta">
+                                                                    <span class="cat-links">
+                                                                        {% set postCategory = allPost.categories.getSnapshot %}
+                                                                        {% set j = -1 %}
+                                                                        {% for category in  postCategory %}
+                                                                            {% set j = j + 1 %}
+
+                                                                            <a class="ct-cat-item-85" href="{{ path('category_link',{slug: category.postCategoryUrl}) }}"  rel="category tag">{{ category.categoryTitle }}</a>
+
+                                                                        {% endfor %}
+                                                                    </span>
+                                                                    </div>
+                                                                    <h3 class="post-title">
+                                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+                                                                    </h3>
+                                                                    <div class="post-meta">
+                                                                    <span class="posted-on"><i class="fa fa-calendar"></i>
+                                                                        <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}" rel="bookmark">
+                                                                            <time class="entry-date published" datetime="2021-11-10T05:58:04+01:00" itemprop="datePublished">{{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                            <time class="updated" datetime="2021-11-10T05:58:07+01:00" itemprop="dateModified">{{ allPost.updatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                        </a>
+                                                                    </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        {% endif %}
+                                                        {% set k = k + 1 %}
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gap-40"></div>
+                            </section>
+                            <section id="refined-magazine-thumbnail-post-2" class="widget refined-magazine-thumbnail-post">
+                                <div class="title-wrapper cat-87">
+                                    {% if postReadMonde is not empty %}
+                                    <h2 class="widget-title">
+                                        <a href="https://gate-news.com/index.php/category/monde/"> Monde </a>
+                                    </h2>
+                                    {% endif %}
+                                </div>
+                                <div class="ct-grid-post clearfix">
+                                    {% for allPost in postReadMonde %}
+                                        <div class="ct-two-cols">
+                                            <div class="list-post-block">
+                                                <div class="list-post">
+                                                    <div class="post-block-style">
+                                                        <div class="post-thumb">
+                                                            <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">
+                                                                {% if  allPost.postPhotos != null %}
+                                                                    <img width="150" height="150" src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                                                                {% endif %}
+                                                            </a>
+                                                        </div>
+                                                        <div class="post-content">
+                                                            <div class="post-meta">
+                                                            <span class="cat-links">
+                                                                {% set postCategory = allPost.categories.getSnapshot %}
+                                                                {% set j = -1 %}
+                                                                {% for category in  postCategory %}
+                                                                    {% set j = j + 1 %}
+                                                                    <a class="ct-cat-item-48" href="{{ path('category_link',{slug: category.postCategoryUrl}) }}"  rel="category tag">{{ category.categoryTitle }}</a>
+                                                                {% endfor %}
+                                                            </span>
+                                                            </div>
+                                                            <div class="featured-post-title">
+                                                                <h3 class="post-title">
+                                                                    <a  href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+                                                                </h3>
+                                                            </div>
+                                                            <div class="post-meta">
+                                                            <span class="posted-on"><i class="fa fa-calendar"></i>
+                                                                <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}" rel="bookmark">
+                                                                    <time class="entry-date published" datetime="2021-06-03T06:51:36+02:00" itemprop="datePublished">{{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                    <time class="updated" datetime="2021-06-03T06:52:48+02:00" itemprop="dateModified">3 juin 2021</time>
+                                                                </a>
+                                                            </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </section>
+                            <section id="refined-magazine-thumbnail-post-7" class="widget refined-magazine-thumbnail-post">
+                                <div class="title-wrapper cat-91">
+                                    {% if postReadSport is not empty %}
+                                    <h2 class="widget-title">
+                                        <a href="https://gate-news.com/index.php/category/sport/"> Sport </a>
+                                    </h2>
+                                    {% endif %}
+                                </div>
+                                <div class="ct-grid-post clearfix">
+                                    {% for allPost in postReadSport %}
+                                        <div class="ct-two-cols">
+                                            <div class="list-post-block">
+                                                <div class="list-post">
+                                                    <div class="post-block-style">
+                                                        <div class="post-thumb">
+                                                            <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">
+                                                                {% if  allPost.postPhotos != null %}
+                                                                    <img width="150" height="150" src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                                                                {% endif %}
+                                                            </a>
+                                                        </div>
+                                                        <div class="post-content">
+                                                            <div class="post-meta">
+                                                            <span class="cat-links">
+                                                                {% set postCategory = allPost.categories.getSnapshot %}
+                                                                {% set j = -1 %}
+                                                                {% for category in  postCategory %}
+                                                                    {% set j = j + 1 %}
+                                                                    <a class="ct-cat-item-48" href="{{ path('category_link',{slug: category.postCategoryUrl}) }}"  rel="category tag">{{ category.categoryTitle }}</a>
+
+                                                                {% endfor %}
+                                                            </span>
+                                                            </div>
+                                                            <div class="featured-post-title">
+                                                                <h3 class="post-title">
+                                                                    <a  href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+                                                                </h3>
+                                                            </div>
+                                                            <div class="post-meta">
+                                                            <span class="posted-on"><i class="fa fa-calendar"></i>
+                                                                <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}" rel="bookmark">
+                                                                    <time class="entry-date published" datetime="2021-05-30T09:52:11+02:00" itemprop="datePublished">{{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                    <time class="updated" datetime="2021-05-30T09:52:25+02:00" itemprop="dateModified">{{ allPost.updatedAt|ago }}</time>
+                                                                </a>
+                                                            </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </section>
+                            <section id="refined-magazine-thumbnail-post-10" class="widget refined-magazine-thumbnail-post">
+                                <div class="title-wrapper cat-93">
+                                    {% if postReadStory is not empty %}
+                                    <h2 class="widget-title">
+                                        <a href="https://gate-news.com/index.php/category/success-story/"> Success Story </a>
+                                    </h2>
+                                    {% endif %}
+                                </div>
+                                <div class="ct-grid-post clearfix">
+                                    {% for allPost in postReadStory %}
+                                        <div class="ct-two-cols">
+                                            <div class="list-post-block">
+                                                <div class="list-post">
+                                                    <div class="post-block-style">
+                                                        <div class="post-thumb">
+                                                            <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">
+                                                                {% if  allPost.postPhotos != null %}
+                                                                    <img width="150" height="150" src="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front')}}" class="attachment-refined-magazine-large-thumb size-refined-magazine-large-thumb wp-post-image" alt="{{allPost.postTitle}}" loading="lazy" itemprop="image" srcset="{{ vich_uploader_asset(allPost, 'imageFile') | imagine_filter('thumb_fixed_front') }} 553w, https://gate-news.com/wp-content/uploads/2021/12/BN-HQ982_diamon_G_20150331054240-300x200.jpg 300w" sizes="(max-width: 553px) 100vw, 553px">
+                                                                {% endif %}
+                                                            </a>
+                                                        </div>
+                                                        <div class="post-content">
+                                                            <div class="post-meta">
+                                                            <span class="cat-links">
+                                                                <a class="ct-cat-item-83" href="{{ path('aLaUne') }}"  rel="category tag">A la une</a>
+
+                                                                {% set postCategory = allPost.categories.getSnapshot %}
+                                                                {% set j = -1 %}
+                                                                {% for category in  postCategory %}
+                                                                    {% set j = j + 1 %}
+                                                                    <a class="ct-cat-item-48" href="{{ path('category_link',{slug: category.postCategoryUrl}) }}"  rel="category tag">{{ category.categoryTitle }}</a>
+
+                                                                {% endfor %}
+                                                            </span>
+                                                            </div>
+                                                            <div class="featured-post-title">
+                                                                <h3 class="post-title">
+                                                                    <a  href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+                                                                </h3>
+                                                            </div>
+                                                            <div class="post-meta">
+                                                            <span class="posted-on"><i class="fa fa-calendar"></i>
+                                                                <a href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}" rel="bookmark">
+                                                                    <time class="entry-date published" datetime="2021-05-16T03:33:00+02:00" itemprop="datePublished">{{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }}</time>
+                                                                    <time class="updated" datetime="2021-05-14T15:35:44+02:00" itemprop="dateModified">14 mai 2021</time>
+                                                                </a>
+                                                            </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </section>
+                        </main>
+                    </div>
+                    {{ include('publique/layout/aside-bar.html.twig') }}
+                </div>
+            </div>
+        </div>
+        {{ include('publique/layout/footer.html.twig') }}
+        <a id="toTop" class="go-to-top" href="#" title="Go to Top"> <i class="fa fa-angle-double-up"></i> </a>
+    </div>
+    <div style="position:fixed;top:10px;right:8%;z-index:999999;" id="gtranslate_wrapper">
+        {# <span class="gsatelites"></span> #}
+        {# <span class="gglobe"></span> #}
+        {{ include('publique/layout/js-code.html.twig') }}
+    </div>
+    </body>
+{% endblock %}

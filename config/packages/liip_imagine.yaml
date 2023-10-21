@@ -1,0 +1,75 @@
+# Documentation on how to configure the bundle can be found at: https://symfony.com/doc/current/bundles/LiipImagineBundle/basic-usage.html
+liip_imagine:
+    filter_sets:
+        # name our filter set "thumbnail_list"
+        BO_LOGO_GCI:
+            quality: 75
+            filters:
+                thumbnail:
+                    size: [100, 100]
+                    mode: [outbound]
+                    allow_upscale: true
+        thumbnail_list:
+            filters:
+
+                # use and setup the "thumbnail" filter
+                thumbnail:
+
+                    # set the thumbnail size to "80x80" pixels
+                    size: [80, 80]
+
+                    # crop the input image, if required
+                    mode: inset
+        # name our filter set "slick"
+        slick:
+            filters:
+
+                # use and setup the "fixed" filter
+                fixed:
+                    # set the fixed size to "120x90" pixels
+                    width: 700
+                    height: 443
+        # name our filter set "slick"
+        slick_thumb_slider_header:
+            filters:
+
+                # use and setup the "fixed" filter
+                fixed:
+                    # set the fixed size to "120x90" pixels
+                    width: 700
+                    height: 402
+        # name our filter set "featured"
+        featured:
+            filters:
+
+                # use and setup the "fixed" filter
+                fixed:
+                    # set the fixed size to "120x90" pixels
+                    width: 390
+                    height: 232
+        # name our filter set "featured"
+        thumb_fixed_front:
+            filters:
+
+                # use and setup the "fixed" filter
+                fixed:
+                    # set the fixed size to "120x90" pixels
+                    width: 150
+                    height: 150
+        related:
+            filters:
+
+                # use and setup the "fixed" filter
+                fixed:
+                    # set the fixed size to "120x90" pixels
+                    width: 350
+                    height: 220
+        large_image_front:
+            filters:
+
+                # use and setup the "fixed" filter
+                fixed:
+                    # set the fixed size to "120x90" pixels
+                    width: 720
+                    height: 450
+    driver: "gd"

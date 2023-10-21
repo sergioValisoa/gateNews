@@ -1,0 +1,120 @@
+{% set menu_account_admin        = true %}
+{{ include('admin/layout/header.html.twig') }}
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+<!-- Navbar nampidirina -->
+{{ include('admin/layout/nav-bar.html.twig') }}
+
+<!-- aside nampidirina -->
+{{ include('admin/layout/aside-bar.html.twig') }}
+
+  <div class="content-wrapper">
+   
+
+    <section class="content">
+      <div class="container-fluid">
+        <div class="content-header">
+                  <div class="container-fluid">
+                    <div class="row mb-2">
+                      <div class="col-sm-6">
+                        <h1 class="m-0">Admin</h1>
+                      </div><!-- /.col -->
+                      <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                          <li class="breadcrumb-item"><a href="{{ path('account_admin') }}">Ajouter un administrateur</a></li>
+                          <li class="breadcrumb-item active">Admin</li>
+                        </ol>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+      {% if msg !=null %}
+        <div class="alert alert-success alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                  <h5><i class="icon fas fa-check"></i>Succès</h5>                
+                    {{ msg }}                 
+        </div>
+      {% endif %}
+         <div class="card card-pink mt-3">
+              <div class="card-header">
+                <h3 class="card-title">Liste utilisateurs</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="post" class="table table-bordered table-striped">
+                  <thead>
+                      <tr>
+                        <th>Nom</th>
+                        <th>Username</th>                       
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Date d'inscription</th>
+                        <th>Actions</th>
+                      </tr>
+                  </thead>
+                      <tbody>
+
+                      {% set i=0 %}
+                  {% for user in journalist %}
+                  {% set i = i + 1 %}
+                    <tr>
+                          <td>{{user.userFullname}}</td>
+                          <td>{{user.userName}}</td>
+                          <td>{{user.userEmail}}</td>
+                          <td>
+                              <ul>
+                            {% for role in user.gnRoles %}
+                                <li>
+                                    {{ role.roleName }}
+                                </li>
+                            {% endfor %}
+                              </ul>
+                          </td>
+                          <td>{{user.CreatedAt|date}}</td>
+                          <td>
+                              <div class="btn-group ml-5">
+                               
+                                    <a href="{{ path('upadate_user',{'id': user.id})}}" class="btn btn-info"><span class="fas fa-edit"></span></a>
+                                  {% if is_granted("ROLE_ADMIN") %}
+                                       <a href="#" onclick="event.preventDefault();confirm('Etes vous sur de supprimer cette utilisateur') && document.getElementById('js-id-delete-{{ i }}').submit();" class="btn btn-danger"><span class="fas fa-trash"></span></a>
+
+                                    <form id="js-id-delete-{{ i }}  " action="{{ path('delete_user', {id: user.id}) }}" style="display:none" method="POST">
+                                      
+                                      <input type="hidden" name="csrf_token" value="{{ csrf_token('user_delete') }}">  
+                                    </form>
+                                  {% endif %}                                 
+                                    
+                                
+                              </div>
+                          </td>
+                    </tr>
+                  {% endfor %}
+                      </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>     
+      </div>
+    </section>
+  </div>
+</div>
+{{ include('admin/layout/footer.html.twig') }}
+    <script>
+        $(function () {
+            $("#post").DataTable({
+                "responsive": true, "lengthChange": false, "ordering": false, "autoWidth": false,
+                "buttons": ["csv", "excel", "pdf"]
+            }).buttons().container().appendTo('#post_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+</body>
+</html>

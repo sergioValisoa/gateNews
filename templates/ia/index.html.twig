@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title "GATE-News | Bienvenu" %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('front/css/bootstrap.css') }}">
+
+{% endblock %}
+
+{% block body %}
+    <div class="m-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h1><a class="text-danger" href="{{path('app_ia')}}">GATE-NEWS</a> : Dynamic Content</h1>
+            </div>
+            <div class="col-md-6">
+                <input type="search" name="search" id="search" class="form-control" placeholder="Recherche ..."/>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    {% for post in posts %}
+                        <div class="card p-3 col-md-4" style="border: 0" onmouseover="this.style='border: 1'" onmouseout="this.style='border: 0'">
+                            <img class="card-img-top" src="{{ vich_uploader_asset(post, 'imageFile') }}" alt="Image">
+                            <div class="card-body">
+                                <h4 class="card-title pt-4">
+                                    <a href="{{ path('app_ia_read', {id: post.id}) }}">{{ post.postTitle }}</a>
+                                </h4>
+                                {% for category in post.categories %}
+                                    <span class="badge badge-danger">{{category.categoryTitle}}</span>
+                                {% endfor %}
+                                <p>{{ post.postCreatedAt | date }}</p>
+                                <p class="card-text mt-2">{{ post.postContent | u.truncate(250, '...') | raw }}<span class="text-muted">({{ post.user.userFullname }})</span></p>
+                            </div>
+                            <hr>
+                        </div>
+
+                    {% endfor %}
+                </div>
+                <div class="m-4 float-right">
+                    {% do posts.setPageRange(2) %}
+                    {{ knp_pagination_render(posts, "ia/_pagination.html.twig") }}
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+                <h4 class="text-center">Articles Récentes</h4>
+               <div class="row">
+                    {% for recentPost in recentPosts %}
+                        <div class="col-md-12">
+                            <h6>
+                                {{ loop.index }} - <a href="{{ path('app_ia_read', {id: recentPost.id}) }}">{{recentPost.postTitle}}</a>
+                            </h6>
+                        </div>
+                    {% endfor %}
+               </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

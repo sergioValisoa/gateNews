@@ -1,0 +1,471 @@
+#inscription
+inscription.creer : Créer un compte
+inscription.remplir.champ : Veuillez remplir  les champs pour la création de votre compte
+inscription.nom : Nom
+inscription.prenom : Prénom
+inscription.email : Email (example@email.en)
+inscription.tel: Numéro de téléphone (06 12 34 56 78)
+inscription.pass : Mot de passe
+inscription.confirm.pass : Confirmer votre mot de passe
+inscription.homme : Homme
+inscription.femme : Femme
+inscription.ville : Ville
+inscription.pays : Pays
+inscription.adresse : Adresse
+inscription.date.naissance : Date de naissance
+inscription.janvier : Janvier
+inscription.fevrier : Fevrier
+inscription.mars : Mars
+inscription.avril : Avril
+inscription.mai : Mai
+inscription.juin : Juin
+inscription.juillet : Juillet
+inscription.aout : Aout
+inscription.septembre : Septembre
+inscription.octobre : Octobre
+inscription.novembre : Novembre
+inscription.decembre : Décembre
+inscription.inscription : Inscription
+inscription.sexe : Sexe
+inscription.mail.p.bonjour : Bonjour
+inscription.mail.p.clique.lien : Cliquer sur le lien pour valider votre compte
+inscription.mail.p.lien : Lien
+inscription.mail.p.validate : Valider mon compte
+inscription.mail.p.merci : Merci
+inscription.mail.p.click.here : Cliquez-ici
+inscription.mail.confirm.title : CSN | Confirmation inscription
+inscription.mail.recuper.passwd : CSN | Récupération mot de passe oublié
+inscription.validation : Valider
+
+#Contact
+contact.title : Formulaire de contact
+contact.standard : Contact standard
+contact.professional : Contact professionnel
+contact.us : Contactez-nous
+contact.firstname : Prénom(s)
+contact.lastname : Nom
+contact.phone : Téléphone
+contact.address : Adresse
+contact.message : Votre message
+contact.send : Envoyer
+contact.mail.sent : Email a été bien envoyé
+contact.mail.not.sent : Email n'a pas été envoyé
+
+#Email
+email.bonjour : Bonjour
+email.resume : Ci-dessous le résumé de la demande que vous avez fait
+email.inscription : Ci-dessous les informations de votre compte après inscription
+email.merci : Merci
+email.content: Voici le contenu du mail
+email.resetting.passwd.identifiant: Voici votre identifiant
+email.resetting.login: Login
+email.resetting.passwd: Mot de passe
+email.resetting.forgotten.passwd: Mot de passe oubliée
+email.resetting.h3: Veuillez saisir votre adresse mail
+email.resetting.input.placeholder: Email ou téléphone
+email.resetting.a.txt: Revenir au page connexion
+
+#Newsletter
+newsletter.confirmation.unsubscriber: Vous êtes maintenant désabonné du newsletter
+
+#BO
+bo.confirmation.ajout: Enregistrement effectué avec succès
+bo.confirmation.modification: Modification effectuée avec succès
+bo.confirmation.suppression: Suppression effectuée avec succès
+bo.confirmation.selection.suppression: Veuillez sélectionner un élément à supprimer
+bo.confirmation.newsletter.envoi.mail: Mail newsletter envoyé avec succès
+bo.datatable.no.enregistrement : Aucun enregistrement trouvé
+bo.datatable.precedente: Précédente
+bo.datatable.suivante: Suivante
+bo.datatable.terminer: Terminer
+bo.datatable.filtrer: Filtrer
+bo.datatable.chargement: Chargement
+bo.datatable.afficher: Afficher
+bo.datatable.enregistrement: enregistrement par page
+bo.datatable.voir: Voir
+bo.datatable.entrees: entrées
+bo.index.total: TOTAL
+bo.index.th.action: Action
+bo.button.suppression: Supprimer la sélection
+bo.button.retour: Retour à la liste
+bo.button.enregistrer: Enregistrer
+bo.button.enregistrer.nouveau: Enregistrer et nouveau
+bo.button.modifier: Modifier
+bo.button.supprimer: Supprimer
+bo.button.signaler: Signaler
+bo.button.voir: Voir
+bo.button.envoyer: Envoyer
+
+#Exception
+exception.entity: Unable to find Entity
+
+#Resetting
+resetting.pasword.success: Récupération mot de passe a été envoyée au mail
+resetting.pasword.user.non.identifie: Utilisateur non identifié
+
+#Header
+header.menu.home: Accueil
+
+#Footer
+footer.menu.mentions.legales: Mentions légales
+
+#timeline
+timeline.post.create.post: Créer une publication
+timeline.button.publish: Publier
+timeline.votre.statut: Votre statut
+timeline.add.status: Ajout Statut
+timeline.choice.status.type: Veuillez choisir le type de statut
+timeline.choice.visibility.type: Veuillez choisir le type de visibilité
+timeline.post.placeholder.exprimer : Exprimez-vous
+timeline.post.fin.chargement : .. Fin du chargement ..
+timeline.post.chargement : Chargement ..
+timeline.post.commenter : Commentaire(s)
+timeline.post.partager : Partager
+timeline.post.txt.dans : dans
+timeline.left.sidebar.see.more: Voir plus
+timeline.modal.btn.close: Fermer
+timeline.modal.add.statut.success.message: Ajout statut effectué
+timeline.modal.share.statut.success.message: Partage statut effectué
+timeline.modal.share.statut.is.limit.message: Partage statut déjà partagé aujourd'hui
+timeline.share.statut.text: Partage statut de
+timeline.statut.drag.drop: Glisser déposer
+timeline.statut.browse: Parcourir
+timeline.statut.delete: Voulez-vous vraiment supprimer ce fichier ?
+timeline.post.share: Partager
+timeline.placeholder.share: Dites quelques choses à propos de cette publication
+timeline.statut.confirm.share: Voulez-vous vraiment partager cette publication ?
+
+#groupe
+groupe.create.discuss: Créer une discussion
+groupe.button.publish: Publier
+groupe.add.status: Add Statut
+groupe.choice.status.type: Veuillez choisir le type de statut
+groupe.choice.visibility.type: Veuillez choisir le type de visibilité
+groupe.creer.groupe : Créer un groupe
+groupe.ajout.groupe : Ajout Groupe
+groupe.placeholder.nom.groupe : Nom du groupe
+groupe.placeholder.ajouter.personne : Ajouter des personnes
+groupe.placeholder.description : Description
+groupe.placeholder.slogan : Slogan du groupe
+groupe.placeholder.type.groupe : type de groupe
+groupe.placeholder.type.visibilite :  Type de visibilité
+groupe.placeholder.logo.groupe : Logo du groupe
+groupe.placeholder.photo.couverture.groupe : Photo de couverture du groupe
+groupe.access_denied: Vous devez rejoindre le groupe pour pouvoir y accéder
+groupe.email.sujet: Nouveau groupe
+groupe.email.contenu: vous a ajouté dans le groupe
+groupe.email.lien: Cliquer le lien ci-dessous pour voir le détail du groupe
+
+#FO Sidebar
+fo.sidebar.verset : VERSET DU JOUR
+fo.sidebar.personne.connaitre : Personne que vous pourriez connaître
+fo.sidebar.left.votre.groupe : Votre groupe
+fo.sidebar.left.suggestion.groupe : Suggestion de groupe
+fo.sidebar.left.voir.groupe : Voir le groupe
+fo.sidebar.left.rejoindre.groupe : Rejoindre le groupe
+fo.sidebar.left.creer : Créer
+fo.sidebar.left.publicite : Publicité
+fo.sidebar.left.page : Page
+fo.sidebar.left.groupe : Groupe
+fo.sidebar.left.profile.demande.amis : Ajouter à la liste d’amis
+fo.sidebar.left.suggestion.amis : Suggestion d'amis
+
+#FO Header
+fo.header.rechercher : Rechercher...
+fo.footer.amis.enligne : Amis
+fo.header.modifier.photo.couverture : Modifier la photo de couverture
+fo.header.mettre.jour.profil : Mettre à jour votre profil
+fo.header.journal : Journal
+fo.header.contact : Contact
+fo.header.amis : Amis
+fo.header.photos : Photos
+fo.header.page.accueil : Page d'accueil
+fo.header.parametre.compte : Paramètre du compte
+fo.header.creer.groupe : Créer un groupe
+fo.header.creer.page : Créer une page
+fo.header.deconnexion : Deconnexion
+fo.header.supprimer.messages : Supprimer toutes les messages
+fo.header.afficher.versets : Afficher tous les versets
+fo.header.supprimer.notifications : Supprimer toutes les notifications
+fo.header.marquer.lus : Tout marquer comme lu
+fo.header.ajouter.nouveau.statut : a ajouté un nouveau statut
+fo.header.modifier.photo.profil.modif : a modifié sa photo de profil
+fo.header.modifier.photo.couverture.modif : a modifié sa photo de couverture
+fo.header.modifier.information.profil.modif : a modifié son information de profil
+fo.header.ajouter.verset : Ajouter un verset
+fo.header.see.more : Voir plus
+fo.header.mutual : amis en commun
+fo.header.quizz: Quiz
+fo.header.hour.ago: heure(s)
+fo.header.days.ago: jour(s)
+fo.header.month.ago: mois
+fo.header.year.ago: an(s)
+fo.header.minutes.ago: minute(s)
+fo.header.week.ago: semaine(s)
+
+#FO Home
+fo.home.btn.register.for.free : S'inscrire gratuitement
+fo.home.btn.suscribe : S'inscrire
+fo.home.label.remember.me : Se souvenir de moi
+fo.home.txt.forgoten.password : Mot de passe oublié ?
+fo.home.txt.log.in : Connexion
+fo.home.txt.verse.of.day : verset du jour
+fo.home.a.read.next : Lire la suite...
+fo.home.txt.username.placeholder : Email, pseudo ou téléphone
+fo.home.txt.h1.welcome : Bienvenue sur le réseau social chrétien
+fo.home.message.phone.already.member : Téléphone déjà membre
+fo.home.message.email.already.member : Email déjà membre
+fo.home.message.email.confirmation : Un message de confirmation contenant un lien d’activation sera envoyé dans votre numéro téléphone
+fo.home.message.email.thanks : Merci pour l'inscription, vous pouvez maintenant vous connecter
+fo.home.message.email.error : Erreur survenue lors du confirmation
+
+#FO Profil
+profil.completer.compte : Completer votre compte
+profil.remplir.champ.compte : Veuillez remplir  les champs pour la modification de votre compte
+profil.placeholder.nom : Nom
+profil.placeholder.prenom : Prénom
+profil.placeholder.email : Email
+profil.placeholder.numero.telephone : Numéro de téléphone (0XXXXXXXXX, +XXXXXXXXX)
+profil.password.title : Modification mot de passe
+profil.placeholder.last.mdp : Mot de passe actuel
+profil.placeholder.mdp : Mot de passe
+profil.placeholder.confirmer.mdp : Confirmer votre mot de passe
+profil.placeholder.ville : Ville
+profil.placeholder.adresse : Adresse
+profil.placeholder.date.naissance : Date de naissance
+profil.placeholder.janvier : Janvier
+profil.placeholder.fevrier : Février
+profil.placeholder.mars : Mars
+profil.placeholder.avril : Avril
+profil.placeholder.mai : Mai
+profil.placeholder.juin : Juin
+profil.placeholder.juillet : Juillet
+profil.placeholder.aout : Août
+profil.placeholder.septembre : Septembre
+profil.placeholder.octobre : Octobre
+profil.placeholder.novembre : Novembre
+profil.placeholder.decembre : Décembre
+profil.placeholder.renseigner.parcours : Renseigner votre parcours professionnel
+profil.placeholder.renseigner.infos.preso : Informations personnelles
+profil.placeholder.renseigner.infos.place : Votre localisation
+profil.placeholder.poste : Poste
+profil.placeholder.societe : Société
+profil.placeholder.de : De
+profil.placeholder.jusqua : jusqu'à
+profil.placeholder.ce.jour : ce jour
+profil.placeholder.maintenant : Maintenant
+profil.placeholder.mettre.jour : Mettre à jour
+profil.placeholder.mettre.jour.tout : Mettre à jour tout
+profil.placeholder.ajouter.commentaire : Ajouter un commentaire
+profil.placeholder.ajouter.commentaire.readonly : Ajouter un commentaire (pour les membres seulement)
+profil.h3.edit.langue : Modification langue
+profil.h3.edit.theme : Modification thème
+profil.h3.customize : Personnalisation
+profil.select.option.placeholder : Veuillez choisir une langue
+profil.select.option.txt.man : Homme
+profil.select.option.txt.woman : Femme
+profil.message.user.not.found : Utilisateur non trouvé !
+profil.message.phone.number.already.exist : Téléphone déjà existant
+profil.message.email.already.exist : Email déjà existant
+profil.message.modification.info.profil.succes : Modification information profil effectuée
+profil.message.modification.info.profil.error : Votre mot de passe actuel est invalide
+profil.message.modification.info.groupe.succes : Modification information groupe effectuée
+profil.message.modification.demande.groupe.succes : Votre demande de rejoindre ce groupe est bien envoyé
+profil.message.groupe.not.found : Groupe non trouvé !
+profil.message.modification.picture.profil.succes : Modification photo de profil effectuée
+profil.message.modification.picture.cover.succes : Modification photo de couverture effectuée
+profil.text.label.aujourdhui : Aujourd'hui
+profil.bootbox.delete.confirm.message : Etes-vous sûr de le supprimer?
+
+#FO profil details
+profil.details.propos : A propos
+profil.details.amis : Amis
+profil.details.request.amis : Demande d'amis
+profil.details.photos : Photos
+profil.details.verset.favoris : Verset favoris
+profil.details.informations.personnelles : Informations personnel
+profil.details.contact : Contact
+profil.details.modifier : modifier
+profil.details.liste.amis : Listes des amis
+profil.details.liste.users.request : Liste de personnes envoyant une demande d'ami
+profil.details.liste.amis.communs : Listes des amis en commun
+profil.details.ajout.recent : Ajoutés récement
+profil.details.meme.pays : Même pays
+profil.details.meme.ville : Même ville
+profil.details.rechercher : Rechercher
+profil.details.tapez.nom : Tapez son nom ici...
+profil.details.lire.suite : Lire la suite
+profil.details.nom : Nom
+profil.details.prenom : Prénom
+profil.details.adresse : Adresse
+profil.details.date.naissance : date de naissance
+profil.details.sexe : Sexe
+profil.details.telephone : Téléphone
+profil.details.adresse.email : Adresse e-mail
+profil.details.trouver.amis : Trouver un amis
+profil.details.show.more.friends: Afficher plus d'amis
+profil.details.friend: Amis
+profil.details.more.pics: plus de photos
+profil.media.filter.label: Filtrer par
+profil.media.filter: Filtrer les
+profil.media.filter.by: par
+profil.media.filter.all: Tout
+profil.media.filter.profil: Profil
+profil.media.filter.couverture: Couverture
+profil.media.filter.statut: Statut
+
+profil.list.notif.profile.picture: a modifié son photo de profil
+profil.list.notif.cover.picture: a modifié sa photo de couverture
+profil.list.notif.profile.info: a modifié son information de profil
+
+#FO groupe details
+groupe.details.membres : Membres
+groupe.details.ajouter.membres : Ajouter des membres
+groupe.details.ajouter.comme.membres : Ajouter comme membre
+groupe.details.groupe.public : Groupe public
+groupe.details.description : Description du groupe
+groupe.details.evenement : Evènement
+groupe.details.evenement.aucun : Aucun événement
+groupe.details.gerer.groupe : Gérer le groupe
+groupe.details.admin : Administrateur
+groupe.confirmation.membre: Demande de rejoindre ce groupe
+groupe.confirmation.accepter: Accepter
+groupe.confirmation.refuser: Refuser
+groupe.confirmation.confirm: Confirmer
+groupe.confirmation.retirer: Retirer
+groupe.confirmation.quitter: Quitter
+groupe.membre.message.accpeter: Nouveau membre accepté
+groupe.membre.message.refuser: Nouveau membre refusé
+groupe.membre.message.quitter: Groupe quitté avec success
+groupe.membre.message.retirer: Membre retiré
+groupe.membre.action: Pour les membres seulement
+groupe.details: Details du groupe
+
+#FO resultat recherche
+fo.resultat.recherche : Résultat de recherche
+fo.resultat.recherche.ajouter : Ajouter
+fo.resultat.recherche.demande.envoyee : Demande envoyée
+fo.resultat.recherche.demande.annulee : Demande annulée
+fo.resultat.recherche.annuler : Annuler
+fo.resultat.recherche.sans : Pas de résultat
+fo.resultat.recherche.aucun : Aucun recherche
+fo.resultat.recherche.supprimer : Supprimer les recherches
+fo.resultat.recherche.personne : Résultat de recherche personne
+fo.resultat.recherche.groupe : Résultat de recherche groupe
+fo.resultat.recherche.htag : Résultat de recherche
+
+#FO chat message
+fo.message.liste.amis.enlinge : liste des amis en ligne
+fo.message.amis.inligne.title : Amis en ligne
+fo.message.today : Aujourd'hui
+fo.message.yesterday : Hier
+fo.message.at : à
+
+#Text
+text.aucun: Aucune
+text.aucun.notif: Aucune notification pour le moment
+text.bienvenue.home : Bienvenue sur csn
+text.home.1 : CSN est un réseau social conçu pour dialoguer dans votre communauté chrétiennes,
+text.home.2 : Rejoignez vos collègues et amis chrétiens sur CSN.
+text.action.non.autoriser : Action non autorisé
+
+#FO commentaire publication
+fo.publication.comment.text.afficher.plus : afficher plus
+
+#Erreur
+erreur.page : La page que vous cherchez a été modifiée, supprimée, renommée ou n'a jamais existé
+erreur.page.introuvable : Page introuvable
+erreur.page.go.home : Accueil
+erreur.page.contact : Contact
+
+#FO contact info
+fo.contact.info.txt.contact.me : Me contacter
+fo.contact.info.txt.title : Me suivre
+fo.contact.info.h1 : Galerie photos
+
+#FO user message
+fo.user.message.input.placeholder : Chercher un utilisateur
+fo.user.message.title : Messages
+fo.user.message.a.mark.as.read : Marquer comme lu
+fo.user.message.a.mark.as.unread : Marquer comme non lu
+fo.user.message.no.message : Aucun message pour le moment
+fo.user.message.liste : Liste des messages
+fo.user.message.login.not.found : Username non trouvé
+fo.user.message.login.bad : Mauvaise authentification
+fo.user.message.login.disabled : Compte désactivé
+fo.user.message.login.authenticated : Authentification réussie
+fo.user.message.login.incorrect : Mot de passe incorrect
+
+#FO verset favoris
+fo.profil.show.verset.favoris.label.livre : Livre
+fo.profil.show.verset.favoris.label.chapitre : Chapitre
+fo.profil.show.verset.favoris.label.verset : Verset
+fo.profil.show.verset.favoris.label.jusqua : Jusqu'à
+fo.profil.show.verset.favoris.label.description : Déscription
+
+fo.notification.show: Détail notification
+fo.notification.li.txt: Notifications
+fo.notification.signale.title: Signaler une notification
+fo.notification.signale.other: Autre
+fo.notification.signale.sent: Signalisation envoyé
+fo.notification.signale.sended: Déjà signalé
+fo.notification.incomment: dans un commentaire
+fo.notification.instatus: dans un statut
+fo.notification.list: Liste de tous les notifications
+
+#FO modal edit photo
+fo.modal.photo.edit.btn.txt : Choisir dans la galerie
+fo.modal.photo.edit.add.photo : Ajouter une photo
+fo.modal.photo.edit.textarea.placeholder : Ecrire ici votre citation...
+fo.modal.photo.input.choose.file : Choisissez un fichier
+fo.modal.photo.btn.txt.choose : Choisir
+fo.modal.photo.modal.h3.choose.pdc : Choisir la photo de couverture
+fo.modal.photo.modal.h3.choose.pdp : Choisir la photo de profil
+
+#FO ajout personne
+fo.ajout.personne.attente.confirmation : Demandes en attente confirmation
+fo.ajout.personne.envoie.succes : Ajout ami envoyé avec succès!
+fo.ajout.personne.annule.succes : Demande d'amis annulé avec succès!
+fo.ajout.personne.request.error : Une erreur est survenue lors du demande
+fo.ajout.personne.cancel.error : Une erreur est survenue lors de l'annulation
+fo.ajout.personne.confirm.friend.request.success : Confirmation avec succès!
+fo.ajout.personne.refuse.friend.request.success : Demande refusé avec succès!
+fo.ajout.personne.bouton.amis: amis
+fo.ajout.personne.bouton.ajouter: ajouter
+fo.ajout.personne.bouton.accepter: accepter
+fo.ajout.personne.bouton.refuser: refuser
+fo.ajout.personne.bouton.attente: en attente
+fo.ajout.personne.bouton.retirer: retirer
+fo.ajout.personne.bouton.annuler: annuler
+
+#FO QUIZZ
+fo.quiz.time.remaining : Vous pouvez repasser au quiz dans
+fo.quiz.start.h4.txt : Vous pouvez cliquer pour commencer le quiz Biblique
+fo.quiz.start.level.h3 : Niveau
+fo.quiz.start.p.question : Question
+
+#FO QUIZ RESULTAT
+fo.quiz.resultat.h3 : Resultat Quiz
+fo.quiz.resultat.note : Note
+fo.quiz.resultat.next : Prochaine quiz
+fo.quiz.resultat.dans : Dans
+fo.quiz.resultat.jour : Jours et
+fo.quiz.resultat.text.vrai : Vrai
+fo.quiz.resultat.text.faux : Faux
+fo.quiz.resultat.your.quiz : Resultat de votre quiz
+fo.quiz.resultat.quiz.recap : Recapitulation de votre dernier quiz
+fo.quiz.resultat.quiz.list.result : Resultat de tous les quiz effectués
+fo.quiz.resultat.question : Question
+fo.quiz.resultat.reponse : Reponse
+fo.quiz.resultat.total.note : Total note
+fo.quiz.resultat.reussi : Félicitation, vous avez réussi le test quiz pour cette mois
+
+#GROUP
+fo.parameter.groupe : Paramètre du groupe
+fo.groupe : Groupe
+fo.groupe.save : Enregister
+fo.groupe.edit : Modifier votre groupe
+fo.groupe.edit.message : Veuillez remplir les champs pour la modification des informations du groupe
+
+#MESSAGE
+message.chat.empty: Veuillez saisissez votre message

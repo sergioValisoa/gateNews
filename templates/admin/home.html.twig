@@ -1,0 +1,178 @@
+{{ include('admin/layout/header.html.twig') }}
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+<!-- Navbar nampidirina -->
+{{ include('admin/layout/nav-bar.html.twig') }}
+
+<!-- aside nampidirina -->
+{{ include('admin/layout/aside-bar.html.twig') }}
+
+  <div class="content-wrapper">
+   
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Accueil</h1>
+          </div><!-- /.col -->
+        </div>
+
+      </div>
+    </div>
+      
+    <section class="content">
+      <div class="container-fluid">
+         <!-- code mila ovaina  -->
+          <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{ nbr_post }}</h3>
+
+                <p>Articles</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-file"></i>
+              </div>
+              <a href="{{ path('list_post') }}" class="small-box-footer">
+                Voir plus <i class="fas fa-arrow-circle-right"></i>
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>{{ nbr_pays }}</h3>
+
+                <p>Pays</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-globe"></i>
+              </div>
+              <a href="{{ path('readCountry') }}" class="small-box-footer">
+                Voir plus <i class="fas fa-arrow-circle-right"></i>
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>{{ nbr_user }}</h3>
+
+                <p>Utilisateurs</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-user-plus"></i>
+              </div>
+              <a href="{{ path('account_list') }}" class="small-box-footer">
+                Voir plus <i class="fas fa-arrow-circle-right"></i>
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>{{ nbr_category }}</h3>
+
+                <p>Catégories</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-chart-pie"></i>
+              </div>
+              <a href="{{ path('readCategory') }}" class="small-box-footer">
+                Voir plus <i class="fas fa-arrow-circle-right"></i>
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+        <!-- /.row -->
+        <!-- row faha 2 -->
+         <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-fuchsia">
+              <div class="inner">
+                <h3>{{ nbr_post_non_approuve }}</h3>
+
+                <p>Articles non approuvés</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-folder"></i>
+              </div>
+              <a href="{{ path('approuve_post') }}" class="small-box-footer">
+                Voir plus <i class="fas fa-arrow-circle-right"></i>
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-orange">
+              <div class="inner">
+                <h3>{{ nbr_comm_non_approuve }}</h3>
+
+                <p>Commentaires non approuvés</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-comments"></i>
+              </div>
+              <a href="{{ path('approuve_comment') }}" class="small-box-footer">
+                Voir plus <i class="fas fa-arrow-circle-right"></i>
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-maroon">
+              <div class="inner">
+                <h3>{{nbr_message_non_lu}}</h3>
+
+                <p>Messages des utilisateurs non lu</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <a href="{{ path('msgNousContacter') }}" class="small-box-footer">
+                Voir plus <i class="fas fa-arrow-circle-right"></i>
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
+           <div class="col-lg-3 col-6">
+             <!-- small card -->
+             <div class="small-box bg-olive">
+               <div class="inner">
+                 <h3>{{ nbr_journalist }}</h3>
+
+                 <p>Journalistes</p>
+               </div>
+               <div class="icon">
+                 <i class="fas fa-chart-pie"></i>
+               </div>
+               <a href="{{ path('list-journalist') }}" class="small-box-footer">
+                 More info <i class="fas fa-arrow-circle-right"></i>
+               </a>
+             </div>
+           </div>
+          <!-- ./col -->
+        </div>
+
+        
+      </div>
+    </section>
+ 
+  </div>
+{{ include('admin/layout/footer.html.twig') }}  
+  
+</body>
+</html>

@@ -1,0 +1,46 @@
+<nav class="float-left" >
+  <ul id="secondary-menu" class="top-menu">
+    <li id="menu-item-4798" class="xoo-el-login-tgr menu-item menu-item-type-custom menu-item-object-custom menu-item-4798">
+      {% if app.user %}
+      {% else %}
+        {% if  app.session.has('user_name') %}
+          {% set user_id = app.session.get('user_name').id %}
+        {% else %}
+           <a><mark>S&rsquo;abonner gratuitement</mark> </a>
+        {% endif %}
+      {% endif %}
+    </li>
+    <li>
+      {% if app.user %}
+        {% set user_id = app.user.id %}
+        {% if app.user.gnRoles.getSnapshot[0].id == 2 %}
+          <a href="{{ path('admin') }}" rel="category tag">Administration</a>
+            <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+            <a href="{{ path('logout') }}" rel="category tag">Se deconnecter</a>
+        {% elseif app.user.gnRoles.getSnapshot[0].id == 3 %}
+          <a href="{{ path('upadate_users', {id:user_id}) }}" rel="category tag">Paramètre</a>
+          <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+          <a href="{{ path('journalist') }}" rel="category tag">Rédaction</a>
+            <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+            <a href="{{ path('logout') }}" rel="category tag">Se deconnecter</a>
+        {% else%}
+            <a>
+                <img alt="" src="https://secure.gravatar.com/avatar/9f1d0299583f16a7411f09ecbcd19ef8?s=96&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/9f1d0299583f16a7411f09ecbcd19ef8?s=192&amp;d=mm&amp;r=g 2x" class="avatar avatar-10 photo" height="15" width="15" loading="lazy">
+                Bonjour, {{ app.user.userFullname }}
+            </a>
+          <a href="{{ path('upadate_users', {id:user_id}) }}" rel="category tag">Paramètre</a>
+<span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+          <a href="{{ path('logout') }}" rel="category tag">Se deconnecter</a>
+        {% endif %}
+      {% else %}
+        {% if  app.session.has('user_name') %}
+          <a href="{{ path('upadate_users',{id:user_id}) }}" rel="category tag">Paramètre</a>
+<span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+          <a href="{{ path('logout') }}" rel="category tag">Se deconnecter</a>
+        {% else %}
+          {# <a href="{{ path('auth') }}" rel="category tag">Se connecter</a> #}
+        {% endif %}        
+      {% endif %}
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,101 @@
+<header id="masthead" class="site-header" itemtype="https://schema.org/WPHeader" itemscope>
+  <div class="overlay"></div>
+  <div class="top-bar">
+    <a href="#" class="ct-show-hide-top">
+      <i class="fa fa-chevron-down"></i>
+    </a>
+    <div class="container-inner clearfix">
+      <div class="top-left-col clearfix">
+        {{ include('publique/layout/nav-bar.html.twig') }}
+      </div>
+      <div class="top-right-col clearfix"></div>
+    </div>
+  </div>
+  <div class="logo-wrapper-block" style="background-image: url({{ asset('front/images/background2.jpeg') }});">
+
+    <div class="container-inner clearfix logo-wrapper-container">
+      <div class="logo-wrapper float-left">
+        <div class="site-branding">
+          <div class="refined-magazine-logo-container">
+            <a href="{{ path('home') }}" class="custom-logo-link" rel="home" aria-current="page">
+              <img width="8000" height="1555" src="{{ asset('front/images/afri.jpg') }}" class="custom-logo" alt="Gate-Info" srcset="{{ asset('front/images/afri.jpg 8000w') }}, {{ asset('front/images/afri.jpg 300w') }}, {{ asset('front/images/afri.jpg 1024w') }}, {{ asset('front/images/afri.jpg 768w') }}, {{ asset('front/images/afri.jpg 1536w') }}, {{ asset('front/images/afri.jpg 2048w') }}, {{ asset('front/images/afri.jpg 1170w') }}" sizes="(max-width: 8000px) 100vw, 8000px" /></a>
+            <h1 class="site-title">
+              <a href="/"  rel="home">Gate Of Africa</a>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="refined-magazine-menu-container">
+    <div class="container-inner clearfix">
+      <nav id="site-navigation"  class="main-navigation" itemtype="https://schema.org/SiteNavigationElement" itemscope>
+        <div class="navbar-header clearfix">
+          <button class="menu-toggle" aria-controls="primary-menu"  aria-expanded="false">
+            <span> </span>
+          </button>
+        </div>
+        <ul id="primary-menu" class="nav navbar-nav nav-menu">
+          <li class="current-menu-item">
+            <a href="/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+          <li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
+            <a href="{{ path('aLaUne') }}">A la une</a>
+          </li>
+          <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-164">
+            <a href="#">Rubriques</a>
+            {% set i=0 %}
+            <ul class="sub-menu">
+            {% for allCategory in recapData %}
+              {% set i=i+1 %}
+              <li id="menu-item-{{ i }}" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-{{ i }}"><a href="{{ path('category_link',{slug: allCategory.postCategoryUrl}) }}">{{ allCategory.CategoryTitle }}</a></li>
+            {% endfor %}
+            
+            </ul>
+          </li>
+          <li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
+            <a href="/category/economie">Economie</a>
+          </li>
+          <li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
+            <a href="/category/sport">Sports</a>
+          </li>
+          <li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
+            <a href="/category/societe">Société</a>
+          </li>
+          <li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
+            <a href="/category/politique">Politique</a>
+          </li>
+          <li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
+            <a href="/category/culture">Culture</a>
+          </li>
+          {# <li id="menu-item-1553" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1553">
+            <a href="{{ path('successStory')}}">Success Story</a>
+          </li> #}
+          {# <li id="menu-item-888" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-888">
+            <a href="{{ path('reportageVideo') }}">Reportages Vidéos</a>
+          </li> #}
+          <li id="menu-item-900" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-900">
+            <a href="{{ path('nousContacter') }}">Nous Contacter</a>
+          </li>
+           <li id="menu-item-900" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-900">
+            <a href="{{ path('auth') }}">Se connecter</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="ct-menu-search">
+        <a class="search-icon-box" href="#"> <i class="fa fa-search"></i></a>
+      </div>
+      <div class="top-bar-search">
+        <form role="search" method="get" class="search-form" action="{{ path('search') }}">
+          <label>
+            <span class="screen-reader-text">Rechercher :</span>
+            <input type="search" class="search-field" placeholder="Rechercher…" value="" name="s" />
+          </label> <input type="submit" class="search-submit" value="Rechercher" />
+        </form>
+        <button type="button" class="close"></button>
+      </div>
+    </div>
+  </div>
+</header>

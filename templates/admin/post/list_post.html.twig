@@ -1,0 +1,118 @@
+{% set menu_post        = true %}
+{{ include('admin/layout/header.html.twig') }}
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+<!-- Navbar nampidirina -->
+{{ include('admin/layout/nav-bar.html.twig') }}
+<!-- aside nampidirina -->
+{{ include('admin/layout/aside-bar.html.twig') }}
+  <div class="content-wrapper">
+    <section class="content">
+      <div class="container-fluid">
+
+        <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Gestion des actualités</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ path('add_post') }}">Créer un article</a></li>
+              <li class="breadcrumb-item active">Admin</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+      {% if msg !=null %}
+        <div class="alert alert-success alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                  <h5><i class="icon fas fa-check"></i>Succès</h5>                
+                    {{ msg }}                 
+        </div>
+      {% endif %}
+         <div class="card card-pink mt-3">
+              <div class="card-header">
+                <h3 class="card-title">Liste de tous les articles</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="post" class="table table-bordered table-striped">
+                  <thead>
+                      <tr>
+                        <th>Id</th>
+                        <th>Titre</th>
+                        <th>Contenu</th>
+                        <th>Catégorie(s)</th>
+                        <th>Image à la une</th>
+                        <th>Auteur</th>
+                        <th>Date de création</th>
+                        <th>Url</th>
+                        <th>Actions</th>
+                      </tr>
+                  </thead>
+                      <tbody>
+                      {#  {% set i=0 %}
+                  {% for post in posts %}
+                    <tr>
+                        {% set i = i + 1 %}
+                          <td>{{post.postTitle}}</td>
+                          <td>{{post.postContent|u.truncate(50,'...')}}</td>
+                          <td>
+                          {% set postCategory = post.categories.getSnapshot %}
+                          {% set j = -1 %}
+                          {% for category in  postCategory %}
+                            {% set j = j + 1 %}
+                            {{ category.categoryTitle }}<br>
+                          {% endfor %}
+                          
+                        </td>
+                          <td style="text-align: center">
+                              {% if post.postPhotos is defined and post.postPhotos is not empty %}
+                                <img src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('thumbnail_list') }}" alt="{{ post.postTitle }}">
+                              {% endif %}
+                          </td>
+                          <td>{{post.User.UserName}}</td>
+                          <td>{{post.postCreatedAt|date}}</td>
+                          <td>
+                              <div class="btn-group ml-5">
+                               
+                                    <a href="{{ path('update_post',{id: post.id})}}" class="btn btn-info"><span class="fas fa-edit"></span></a>
+                                    <a href="{{ path('readComment', {id: post.id}) }}" class="btn btn-secondary"><span class="fas fa-comment"></span></a>
+
+                                    <a href="#" onclick="event.preventDefault();confirm('Etes vous sur de supprimer cette article') && document.getElementById('js-id-delete-{{ i }}').submit();" class="btn btn-danger"><span class="fas fa-trash"></span></a>
+
+                                    <form id="js-id-delete-{{ i }}" action="{{ path('delete_post', {id: post.id}) }}" style="display:none" method="POST">
+                                      
+                                      <input type="hidden" name="csrf_token" value="{{ csrf_token('post_delete') }}">  
+                                    </form>
+                                
+                              </div>
+                          </td>
+                    </tr>
+                  {% endfor %}#}
+                      </tbody>
+                  
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>     
+      </div>
+    </section>
+  </div>
+{{ include('admin/layout/footer.html.twig') }}
+{% block javascripts %}
+    <script type="text/javascript">
+        var url_reponse_ajax = "{{ path('list_post_ajax') }}";
+        var len_menu = "{{ 'bo.datatable.afficher'|trans }} _MENU_ {{ 'bo.datatable.enregistrement'|trans }}";
+        var info = "{{ 'bo.datatable.voir'|trans }} _TOTAL_ de _PAGE_ pour _PAGES_ {{ 'bo.datatable.entrees'|trans }}";
+        var href_edit_default = "{{ path('update_post', {id: 0}) }}";
+        var href_delete_default = "{{ path('delete_post', {id: 0}) }}";
+        var href_apercu_default = "{{ path('readMore',{_slug:'url_default', _year:'year', _month:'month', _day:'day'}) }}";
+    </script>
+    <script src="{{ asset('assets/custom/js/post.reponse.js') }}"></script>
+{% endblock %}
+</div>
+</body>
+</html>

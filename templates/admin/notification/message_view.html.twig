@@ -1,0 +1,97 @@
+{{ include('admin/layout/header.html.twig') }}
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+<!-- Navbar nampidirina -->
+{{ include('admin/layout/nav-bar.html.twig') }}
+
+<!-- aside nampidirina -->
+{{ include('admin/layout/aside-bar.html.twig') }}
+
+  <div class="content-wrapper">
+   
+
+    <section class="content">
+      <div class="container-fluid">
+
+        <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Messages</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ path('msgNousContacter') }}">Listes des messages</a></li>
+              <li class="breadcrumb-item active">Admin</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="col-md-12">
+            <!-- Widget: user widget style 1 -->
+            <div class="card card-widget widget-user">
+              <!-- Add the bg color to the header using any of the bg-* classes -->
+              <div class="widget-user-header bg-info">
+                <h3 class="widget-user-username">{{ messages.Prenom }} {{ messages.Nom }}</h3>
+                <h5 class="widget-user-desc">{{ messages.Email }}</h5>
+              </div>
+              <div class="widget-user-image">
+                <img class="img-circle elevation-2" src="{{ asset('assets/dist/img/user1-128x128.jpg') }}" alt="User Avatar">
+              </div>
+              <div class="card-footer">
+                <div class="row">
+                  <p>{{ messages.message }}</p>                 
+                </div>
+                <!-- /.row -->
+              </div>
+            </div>
+            <!-- /.widget-user -->
+          </div>
+          
+      </div>
+    </section>
+ 
+  </div>
+<script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{{ asset('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+
+<script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+
+<script src="{{ asset('assets/plugins/datatables/jquery.dataTables.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+
+
+
+<script src="{{ asset('assets/dist/js/adminlte.js') }}"></script>
+
+<script src="{{ asset('assets/dist/js/demo.js') }}"></script>
+
+<script src="{{ asset('assets/dist/js/pages/dashboard.js') }}"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $("#post").DataTable({
+      "responsive": true, "lengthChange": false,  "autoWidth": false
+    });
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+</div>
+</body>
+</html>
