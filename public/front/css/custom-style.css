@@ -1,0 +1,13 @@
+.main-navigation li a {
+    padding: 15px 13px!important;
+    color: #fff;
+    font-size: 15px!important;
+}
+.main-navigation ul li a:hover,
+.main-navigation ul li.current-menu-item>a {
+    background-color: #fef104!important;
+    color: #000
+}
+.fa-home {
+     color: #000!important;
+ }

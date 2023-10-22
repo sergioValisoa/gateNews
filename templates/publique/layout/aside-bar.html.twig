@@ -1,10 +1,20 @@
 <aside id="secondary" class="widget-area" itemtype="https://schema.org/WPSideBar" itemscope>
 	<div class="ct-sidebar-wrapper">
+		<div class="sidebar-widget-container">
+			<section id="text-3" class="widget widget_text">
+				<h2 class="widget-title">Articles récents</h2>
+				<div class="textwidget">
+					{{ render(controller(
+						'App\\Controller\\BlogController::recentPost'
+					)) }}
+				</div>
+			</section>
+		</div>
 		<div class="widget_text sidebar-widget-container">
 			<section id="custom_html-7" class="widget widget_media_image">
 				<div class="textwidget custom-html-widget">
 					<div class="map" id="map">
-						<h2 class="widget-title">Choose your city</h2>
+						<h2 class="widget-title">Choisir votre pays</h2>
 						<div class="map__image">
 							{% include "publique/layout/africa-svg..html.twig" %}
 

@@ -20,7 +20,7 @@
             <a href="{{ path('home') }}" class="custom-logo-link" rel="home" aria-current="page">
               <img width="8000" height="1555" src="{{ asset('front/images/afri.jpg') }}" class="custom-logo" alt="Gate-Info" srcset="{{ asset('front/images/afri.jpg 8000w') }}, {{ asset('front/images/afri.jpg 300w') }}, {{ asset('front/images/afri.jpg 1024w') }}, {{ asset('front/images/afri.jpg 768w') }}, {{ asset('front/images/afri.jpg 1536w') }}, {{ asset('front/images/afri.jpg 2048w') }}, {{ asset('front/images/afri.jpg 1170w') }}" sizes="(max-width: 8000px) 100vw, 8000px" /></a>
             <h1 class="site-title">
-              <a href="/"  rel="home">Gate Of Africa</a>
+              <a href="/"  rel="home">GateNews</a>
             </h1>
           </div>
         </div>
@@ -42,8 +42,15 @@
             </a>
           </li>
           <li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
-            <a href="{{ path('aLaUne') }}">A la une</a>
+            <a href="/category/economie">Actualités économiques</a>
           </li>
+          <li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
+            <a href="{{ path('home') }}">Entrepreunariat et Start-up</a>
+          </li>
+          <li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
+            <a href="/category/culture">Tourisme et Culture</a>
+          </li>
+          {#
           <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-164">
             <a href="#">Rubriques</a>
             {% set i=0 %}
@@ -52,36 +59,40 @@
               {% set i=i+1 %}
               <li id="menu-item-{{ i }}" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-{{ i }}"><a href="{{ path('category_link',{slug: allCategory.postCategoryUrl}) }}">{{ allCategory.CategoryTitle }}</a></li>
             {% endfor %}
-            
             </ul>
           </li>
-          <li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
-            <a href="/category/economie">Economie</a>
-          </li>
-          <li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
-            <a href="/category/sport">Sports</a>
-          </li>
+           #}
           <li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
             <a href="/category/societe">Société</a>
+          </li>
+          <li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
+            <a href="{{ path('home') }}">Interviews et portraits</a>
           </li>
           <li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
             <a href="/category/politique">Politique</a>
           </li>
           <li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
-            <a href="/category/culture">Culture</a>
+            <a href="{{ path('home') }}">International</a>
+          </li>
+          <li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
+            <a href="/category/sport">Sports</a>
+          </li>
+          <li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
+            <a href="{{ path('home') }}">Faits divers</a>
           </li>
           {# <li id="menu-item-1553" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1553">
             <a href="{{ path('successStory')}}">Success Story</a>
           </li> #}
           {# <li id="menu-item-888" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-888">
             <a href="{{ path('reportageVideo') }}">Reportages Vidéos</a>
-          </li> #}
+          </li>
           <li id="menu-item-900" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-900">
             <a href="{{ path('nousContacter') }}">Nous Contacter</a>
           </li>
            <li id="menu-item-900" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-900">
             <a href="{{ path('auth') }}">Se connecter</a>
           </li>
+          #}
         </ul>
       </nav>
       <div class="ct-menu-search">

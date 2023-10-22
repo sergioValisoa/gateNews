@@ -1,0 +1,15 @@
+{% if recentPost is not empty %}
+    <ul>
+    {% for allPost in recentPost %}
+        <li>
+            <h6>
+                <a  href="{{ path('readMore',{_slug:allPost.postUrl, _year:allPost.postCreatedAt|date("Y"), _month:allPost.postCreatedAt|date("m"), _day:allPost.postCreatedAt|date("j")}) }}">{{ allPost.postTitle|raw }}</a>
+            </h6>
+            <a>
+            <span style="color:#4169e1!important;font-size: 12px!important;" class="posted-on">(<i class="fa fa-calendar"></i>
+                {{ allPost.postCreatedAt|date|format_datetime(pattern="dd LLLL Y",locale='fr') }})</span>
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}

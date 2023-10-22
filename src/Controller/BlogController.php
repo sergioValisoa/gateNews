@@ -41,8 +41,6 @@ class BlogController extends AbstractController
 
     public function __construct(GnPostCategoryRepository $read, GnCountryRepository $country, GnPostRepository $postRead, Security $security)
     {
-
-
         $cat1 = $read->find(94);
         $cat2 = $read->find(97);
         $cat3 = $read->find(84);
@@ -84,7 +82,6 @@ class BlogController extends AbstractController
             array_push($post, $postRead->getPostsByCategory($i));
         }
         $countPost = count($post);
-        //dd(array_push($post,$postRead->getPostsByCategory($i)));
 
         $postReadEconomie = $postRead->getAllPostParCategory(84);
         $postReadBusiness = $postRead->getAllPostParCategory(100);
@@ -103,10 +100,6 @@ class BlogController extends AbstractController
         //abonnement
         if ($request->getSession()->has('user_name')) {
             $user = $request->getSession()->get('user_name');
-            //dd($userrepo->getOneUserNotAbonne($user->getId()));
-            // if($userrepo->getOneUserNotAbonne($user->getId()) OR $userrepo->getOneAdmin($user->getId())){
-            //vérifier si un user est confirmer
-
             return $this->render('publique/index.html.twig', [
                 'recapData' => $this->data,
                 'postRead1' => $postRead1,
@@ -130,16 +123,6 @@ class BlogController extends AbstractController
                 'title' => '',
                 'footer' => $this->footer
             ]);
-            //}
-            // else{
-            //     $abonnement = $subscri->findAll();
-            //     return $this->render('publique/Abonnement/abonnement.html.twig', [
-            //         'recapData' => $this->data,
-            //         'abonnements' => $abonnement,
-            //         'title' => 'Abonnement',
-            //         'pays' => $this->pays,
-            //         'footer' => $this->footer]);
-            // }
         }
 
 
@@ -165,6 +148,15 @@ class BlogController extends AbstractController
             'title' => '',
             'pays' => $this->pays,
             'footer' => $this->footer
+        ]);
+    }
+
+
+    public function recentPost(GnPostRepository $postRead, Request $request, GnUserRepository $userrepo, GnPostCategoryRepository $categoryRead, GnSubscriptionRepository $subscri): Response
+    {
+        $recentPost = $postRead->findBy(['isApprouved' => 1, 'isDeleted' => 0], ['postCreatedAt' => 'DESC'], 10);
+        return $this->render('publique/layout/recent_post.html.twig', [
+            'recentPost' => $recentPost
         ]);
     }
 
