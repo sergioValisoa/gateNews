@@ -14,3 +14,9 @@
 .cat-links a {
     color: #fef104!important;
 }
+.posted-on{
+    color: #fef104!important;
+}
+.list-post .posted-on, .ct-grid-post .posted-on{
+    color: #4169e1!important;
+}
