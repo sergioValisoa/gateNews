@@ -4,7 +4,7 @@
 
 $(function() {
   // Plugins select2
-  $("#ad_post_categories, #da_admin_account_daRoles").select2();
+  $("#gn_post_categories, #gn_admin_account_daRoles").select2();
   $('.select2-container').css('display', 'block');
   $('#gn_post_postImages').parent().css('display', 'none');
   $('.add-another-collection-widget').click(function (e) {
