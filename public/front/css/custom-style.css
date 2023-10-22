@@ -20,3 +20,10 @@
 .list-post .posted-on, .ct-grid-post .posted-on{
     color: #4169e1!important;
 }
+.menu-item-4798 mark{
+    padding: 5px 22px;
+    background-color: #000;
+    color: #fef104;
+    border-radius: 15px;
+    border: 1px solid black;
+}
