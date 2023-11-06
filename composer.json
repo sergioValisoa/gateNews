@@ -1,7 +1,7 @@
 {
     "type": "project",
     "license": "proprietary",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
         "php": ">=7.2.5",
@@ -16,6 +16,7 @@
         "doctrine/orm": "^2.10",
         "fakerphp/faker": "^1.19",
         "friendsofsymfony/ckeditor-bundle": "^2.4",
+        "friendsofsymfony/elastica-bundle": "^6.3",
         "helios-ag/fm-elfinder-bundle": "^12.1",
         "knplabs/doctrine-behaviors": "^2.2",
         "knplabs/knp-paginator-bundle": "^5.8",
@@ -67,7 +68,7 @@
         "platform-check": false,
         "platform": {
             "php": "7.4.33"
-         },
+        },
         "allow-plugins": {
             "composer/package-versions-deprecated": true,
             "symfony/flex": true,
