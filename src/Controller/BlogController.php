@@ -359,7 +359,7 @@ class BlogController extends AbstractController
         return $this->render('publique/nousContacter/nous_contacter.html.twig', ['recapData' => $this->data, 'nousContacter' => $form->createView(), 'pays' => $this->pays, 'title' => 'Nous Contacter', 'footer' => $this->footer]);
     }
 
-
+  
 
     /**
      * @Route("/payemnt/{id<[0-9]+>}", name="payement")

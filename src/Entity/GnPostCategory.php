@@ -72,6 +72,11 @@ class GnPostCategory
      */
     private $postCategoryUrl;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $premium;
+
     public function __toString() {
         return $this->categoryTitle;
     }
@@ -222,5 +227,17 @@ class GnPostCategory
     public function setPostCategoryUrl($postCategoryUrl): void
     {
         $this->postCategoryUrl = $postCategoryUrl;
+    }
+
+    public function isPremium(): ?bool
+    {
+        return $this->premium;
+    }
+
+    public function setPremium(?bool $premium): self
+    {
+        $this->premium = $premium;
+
+        return $this;
     }
 }

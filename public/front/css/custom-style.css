@@ -1,7 +1,7 @@
 .main-navigation li a {
     padding: 15px 13px!important;
     color: #fff;
-    font-size: 15px!important;
+    font-size: 15px!important
 }
 
 .main-navigation ul li a:hover,
@@ -11,20 +11,20 @@
 }
 
 .fa-home {
-    color: #000!important;
+    color: #000!important
 }
 
 .cat-links a {
-    color: #0398d3!important;
+    color: #0398d3!important
 }
 
 .posted-on {
-    color: #0398d3!important;
+    color: #0398d3!important
 }
 
-.list-post .posted-on,
-.ct-grid-post .posted-on {
-    color: #4169e1!important;
+.ct-grid-post .posted-on,
+.list-post .posted-on {
+    color: #4169e1!important
 }
 
 .menu-item-4798 mark {
@@ -32,5 +32,5 @@
     background-color: #000;
     color: #0398d3;
     border-radius: 15px;
-    border: 1px solid black;
+    border: 1px solid #000
 }

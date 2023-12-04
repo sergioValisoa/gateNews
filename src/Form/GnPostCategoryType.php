@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class GnPostCategoryType extends AbstractType
 {
@@ -36,6 +37,10 @@ class GnPostCategoryType extends AbstractType
                 'asset_helper'  => true,
                 'attr' => ['class' => 'form-control mb-3',
                     'style' => "border:none!important"]
+            ])
+            ->add('premium', CheckboxType::class, [
+                'label' => 'Premium',
+                'required' => false, 
             ])
         ;
     }

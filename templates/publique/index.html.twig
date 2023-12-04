@@ -1,6 +1,6 @@
 {% extends 'base_front.html.twig' %}
 {% set user_role = (app.user is defined and app.user is not null) ? 'authenticated' : 'undefined' %}
-{% block title %}{{ parent() }} Bienvenue sur Gate Of Africa {% endblock %}
+{% block title %}{{ parent() }} Bienvenue sur Gate News Africa {% endblock %}
 {% block body %}
 <body class="home blog custom-background wp-custom-logo wp-embed-responsive hfeed ct-full-layout ct-sticky-sidebar right-sidebar" itemtype="https://schema.org/Blog" itemscope>
     <div id="page" class="site">
@@ -112,7 +112,7 @@
         <div class="trending-wrapper">
             <strong class="trending-title"> Fil d&#039;actu </strong>
             <div class="trending-content trending-left">
-                {% for allPost in postRead2|slice(0, 5) %}
+                {% for allPost in postRead1|slice(0, 5) %}
                 <a href="#">
                     <span class="img-marq">
                         {% if  allPost.postPhotos != null %}
@@ -128,9 +128,17 @@
                 <div class="front-page-content-wrapper">
                     <div id="primary" class="content-area">
                         <main id="main" class="site-main">
-                            <section id="media_image-13" class="widget widget_media_image">
-                                <img width="300" height="150" src="{{ asset('front/images/gate-company.jpg') }}" class="image wp-image-4249  attachment-medium size-medium" alt="" loading="lazy" style="max-width: 100%; height: auto;" srcset="{{ asset('front/images/gate-company.jpg 300w') }}, {{ asset('front/images/gate-company.jpg 1024w') }}, {{ asset('front/images/gate-company.jpg 768w') }}, {{ asset('front/images/gate-company.jpg 1536w') }}, {{ asset('front/images/gate-company.jpg 1170w') }}, {{ asset('front/images/gate-company.jpg 1920w') }}" sizes="(max-width: 300px) 100vw, 300px"/>
-                            </section>
+                            {# <section id="media_image-13" class="widget widget_media_image" > #}
+   
+
+
+<style>
+</style>
+                   
+
+                                {# <img width="300" height="150" src="{{ asset('front/images/gate-news-africa-vao2.png') }}" class="image wp-image-4249  attachment-medium size-medium" alt="" loading="lazy" style="max-width: 100%; height: auto;" srcset="{{ asset('front/images/gate-news-africa-vao2.png 300w') }}, {{ asset('front/images/gate-news-africa-vao2.png 1024w') }}, {{ asset('front/images/gate-news-africa-vao2.png 768w') }}, {{ asset('front/images/gate-news-africa-vao2.png 1536w') }}, {{ asset('front/images/gate-news-africa-vao2.png 1170w') }}, {{ asset('front/images/gate-news-africa-vao2.png 1920w') }}" sizes="(max-width: 300px) 100vw, 300px"/> #}
+                            {# </section> #}
+ 
                             <section id="refined-magazine-post-slider-1" class="widget refined-magazine-post-slider">
                                 <div class="title-wrapper cat-80">
                                     {% if postReadDrct is not empty %}
@@ -1088,9 +1096,11 @@
         <a id="toTop" class="go-to-top" href="#" title="Go to Top"> <i class="fa fa-angle-double-up"></i> </a>
     </div>
     <div style="position:fixed;top:10px;right:8%;z-index:999999;" id="gtranslate_wrapper">
-        {# <span class="gsatelites"></span> #}
-        {# <span class="gglobe"></span> #}
+        <span class="gsatelites"></span>
+        <span class="gglobe"></span>
         {{ include('publique/layout/js-code.html.twig') }}
     </div>
+     <script></script>
     </body>
+           
 {% endblock %}

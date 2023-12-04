@@ -1,5 +1,16 @@
-<nav class="float-left" >
+<nav class="float-left">
   <ul id="secondary-menu" class="top-menu">
+    {# <li class="text-center">Rejoignez-nous:</li>
+     <li><a href="https://twitter.com/gate_press"><img src="{{ asset('images/Twitter.ico') }}" width="8%" srcset=""></a> </li>
+    <li ><a href="https://www.facebook.com/profile.php?id=100086225130254"><img src="{{ asset('images/Facebook.ico') }}" width="8%" srcset=""></a></li>
+ <li><a href="https://www.instagram.com/gatenews.africa/"><img src="{{ asset('images/Instagram.ico') }}" width="8%" srcset=""></a> </li> #}
+    
+     <li>
+    <a class="text-align-center">Rejoignez-nous:</a>
+     <a href="https://twitter.com/gate_press"><img src="{{ asset('images/Twitter.ico') }}" width="2%" srcset=""></a>
+    <a href="https://www.facebook.com/profile.php?id=100086225130254"><img src="{{ asset('images/Facebook.ico') }}" width="2%" srcset=""></a>
+ <a href="https://www.instagram.com/gatenews.africa/"><img src="{{ asset('images/Instagram.ico') }}" width="2%" srcset=""></a> 
+    </li>
     <li id="menu-item-4798" class="xoo-el-login-tgr menu-item menu-item-type-custom menu-item-object-custom menu-item-4798">
       {% if app.user %}
       {% else %}
@@ -42,5 +53,8 @@
         {% endif %}        
       {% endif %}
     </li>
+ 
   </ul>
+
 </nav>
+

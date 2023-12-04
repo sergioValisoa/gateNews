@@ -1,3 +1,17 @@
+<head>
+<!-- Bootstrap CSS -->
+	<link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/modals/">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+        integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+        crossorigin="anonymous" />
+
+</head>
 <header id="masthead" class="site-header" itemtype="https://schema.org/WPHeader" itemscope>
 	<div class="overlay"></div>
 	<div class="top-bar">
@@ -11,8 +25,7 @@
 			<div class="top-right-col clearfix"></div>
 		</div>
 	</div>
-	<div
-		class="logo-wrapper-block" style="background-color:yellow;">
+	<div class="logo-wrapper-block" style="background-color:yellow;">
 		{# <div class="logo-wrapper-block" style="background-image: url({{ asset('front/images/b.jpg') }});"> #}
 
 		<div class="container-inner clearfix logo-wrapper-container">
@@ -20,15 +33,45 @@
 				<div class="site-branding">
 					<div class="refined-magazine-logo-container">
 						<a href="{{ path('home') }}" class="custom-logo-link" rel="home" aria-current="page">
-							<img width="8000" height="1555" src="{{ asset('front/images/gate-news-africa-vao2.png') }}" class="custom-logo" alt="Gate-Info" srcset="{{ asset('front/images/gate-news-africa-vao2.png 8000w') }}, {{ asset('front/images/gate-news-africa-vao2.png 300w') }}, {{ asset('front/images/gate-news-africa-vao2.png 1024w') }}, {{ asset('front/images/gate-news-africa-vao2.png 768w') }}, {{ asset('front/images/gate-news-africa-vao2.png 1536w') }}, {{ asset('front/images/gate-news-africa-vao2.png 2048w') }}, {{ asset('front/images/gate-news-africa-vao2.png 1170w') }}" sizes="(max-width: 8000px) 100vw, 8000px"/></a>
+							<img width="8000" height="1555" src="{{ asset('front/images/gate-news-africa-vao2.png') }}" class="custom-logo" alt="Gate-Info" srcset="{{ asset('front/images/gate-news-africa-vao2.png 8000w') }}, {{ asset('front/images/gate-news-africa-vao2.png 300w') }}, {{ asset('front/images/gate-news-africa-vao2.png 1024w') }}, {{ asset('front/images/gate-news-africa-vao2.png 768w') }}, {{ asset('front/images/gate-news-africa-vao2.png 1536w') }}, {{ asset('front/images/gate-news-africa-vao2.png 2048w') }}, {{ asset('front/images/gate-news-africa-vao2.png 1170w') }}" sizes="(max-width: 8000px) 100vw, 8000px"/>
+							</a>
 						<h1 class="site-title">
-							<a href="/" rel="home">GateNews</a>
+							<a href="/" rel="home">Gate News Africa</a>
 						</h1>
 					</div>
 				</div>
 			</div>
-			{# <div class="logo-wrapper float-right"><img src="{{ asset('images/ong1.png') }}" alt="" srcset="">
-			      <p style="font-weight: 400; color:white">Lorem ipsum dolor sit amet consectetur.</p></div> #}
+			<div class="logo-wrapper" style="height:50%;width:65%;">
+			<div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>    
+  </ul>
+  
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+  <a href="https://gateafri.com/"> <img src="{{ asset('images/emedia.jpg') }}" alt="GateAfri" ></a>
+    </div>
+    <div class="carousel-item">
+	<a href="https://www.afrimuz.com/"> <img src="{{ asset('images/road show.jpg') }}" alt="AfriMuz" ></a>
+    </div>
+
+  </div>
+  
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+
+
+</div>
+			     </div>
 		</div>
 
 	</div>
@@ -47,44 +90,29 @@
 						</a>
 					</li>
 					<li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
-						<a href="/category/economie">Actualités économiques</a>
+						<a href="/category/economie">Actualités</a>
 					</li>
 					<li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
-						<a href="/category/entrepreneuriat">Entrepreneuriat
+						<a href="/category/economie" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@mdo">Investir en Afrique</a>
+					</li>
+					<li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
+						<a href="/category/entrepreneuriat" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Entreprenariat et startup
 						</a>
 					</li>
 					<li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
-						<a href="/category/culture">Tourisme et Culture</a>
-					</li>
-					{#
-					          <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-164">
-					            <a href="#">Rubriques</a>
-					            {% set i=0 %}
-					            <ul class="sub-menu">
-					            {% for allCategory in recapData %}
-					              {% set i=i+1 %}
-					              <li id="menu-item-{{ i }}" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-{{ i }}"><a href="{{ path('category_link',{slug: allCategory.postCategoryUrl}) }}">{{ allCategory.CategoryTitle }}</a></li>
-					            {% endfor %}
-					            </ul>
-					          </li>
-					           #}
-					<li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
-						<a href="/category/societe">Société</a>
+						<a href="">Développement durable</a>
 					</li>
 					<li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
-						<a href="{{ path('home') }}">Interviews et portraits</a>
+						<a href="">Tech et innovation</a>
 					</li>
+					{# <li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
+						<a href="">Divers</a>
+					</li>			          	 #}
 					<li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
-						<a href="/category/politique">Politique</a>
+						<a href="/nousContacter">Contact</a>
 					</li>
-					<li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
-						<a href="{{ path('home') }}">International</a>
-					</li>
-					<li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
-						<a href="/category/sport">Sports</a>
-					</li>
-					<li id="menu-item-883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-883">
-						<a href="{{ path('home') }}">Faits divers</a>
+          <li class="current-menu-item">
+						<a href="/ong"><img src="{{ asset('images/icons8_trust.ico') }}" alt="" width="15%">Soutenez ONG New life</a>
 					</li>
 					{# <li id="menu-item-1553" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1553">
 					            <a href="{{ path('successStory')}}">Success Story</a>
@@ -101,6 +129,43 @@
 					          #}
 				</ul>
 			</nav>
+			
+	<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-xl">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="text-center fw-bold display-4">Investir <span class="text-danger">en Afrique</span></h4>
+							
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">	
+							<stripe-pricing-table pricing-table-id="prctbl_1OHMGCEqzh7xWiiAIwWWnGUB"
+								publishable-key="pk_test_51N6EdwEqzh7xWiiA2lv6X2g8EOVkiVGYoGvjr21I94Do4UPddo47PZ9SKNwfSBgCPugOMuM0u909TCwgxU2rNOqz00C4aDTebw">
+							</stripe-pricing-table>
+							
+						</div>
+				</div>
+    		</div>
+		</div>
+
+
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="text-center fw-bold display-4">Entreprenariat <span class="text-danger">et Startup</span></h4>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<stripe-pricing-table pricing-table-id="prctbl_1OHN3BEqzh7xWiiANn2Bwaov"
+							publishable-key="pk_test_51N6EdwEqzh7xWiiA2lv6X2g8EOVkiVGYoGvjr21I94Do4UPddo47PZ9SKNwfSBgCPugOMuM0u909TCwgxU2rNOqz00C4aDTebw">
+						</stripe-pricing-table>
+					</div>
+				</div>
+			</div>
+		</div>
+			
+    
 			<div class="ct-menu-search">
 				<a class="search-icon-box" href="#">
 					<i class="fa fa-search"></i>
@@ -119,3 +184,12 @@
 		</div>
 	</div>
 </header>
+<script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous"></script>
